@@ -1,0 +1,18 @@
+.date {
+  position: relative;
+  left: 4.19%;
+  right: 61.52%;
+  top: 49.08%;
+  bottom: 41.1%;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #aaacbc;
+}
+
+.hide {
+  display: none;
+}

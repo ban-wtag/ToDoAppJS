@@ -5,6 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1e5a35ab03.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="header">
+        <!-- in this section I will store todo icon and search button -->
+      </div>
+
+      <!-- create button -->
+      <div class="create">
+        <h1>Add Tasks</h1>
+        <button id="createButton">
+          <i class="fa-duotone fa-plus"></i>Create
+        </button>
+      </div>
+
+      <!-- ****************** content section where to show list of tasks. un order list akare show korabo ************************-->
+      <div class="content">
+        <ul id="list"></ul>
+      </div>
+
+      <!-- ******************* add to to button jekhan theke task add er kaj korbo -->
+      <div class="hide" id="inputTask">
+        <!-- <i class="fa fa-plus-circle"></i> -->
+        <input type="text" id="input" placeholder="Add a Todo" /> <br />
+        <button id="addTaskButton">Add Task</button>
+        <div class="trashInput">
+          <img src="icons/delete.svg" job="delete" id="0" />
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/addToTask.js" defer></script>
+  </body>
 </html>
