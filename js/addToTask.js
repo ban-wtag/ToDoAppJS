@@ -10,7 +10,7 @@ import {
 } from "./constants.js"; //named import
 
 export let LIST = [];
-export let id;
+export let id = 0;
 let tarikh;
 function addToDo(toDo, id, done, edit, trash) {
   if (trash) {
