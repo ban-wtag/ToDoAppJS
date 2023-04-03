@@ -1,22 +1,17 @@
-//create button
-export const createTask = document.getElementById("createButton");
+import {
+  createTask,
+  content,
+  list,
+  inputTask,
+  input,
+  addTask,
+  trashInput,
+  today,
+} from "./constants.js"; //named import
 
-//content  task list
-export const content = document.querySelector(".content");
-export const list = document.getElementById("list");
-
-//Input BOX: add to task input box, add task button, trash button
-export const inputTask = document.getElementById("inputTask");
-export const input = document.getElementById("input");
-export const addTask = document.getElementById("addTaskButton");
-export const trashInput = document.querySelector(".trashInput");
-
-//required variabls
 export let LIST = [];
-export let id = 0;
-export let today;
-export let tarikh;
-
+export let id;
+let tarikh;
 function addToDo(toDo, id, done, edit, trash) {
   if (trash) {
     return;
@@ -29,9 +24,7 @@ function addToDo(toDo, id, done, edit, trash) {
     year: "numeric",
   };
 
-  today = new Date();
   tarikh = today.toLocaleDateString("en-us", options);
-
   const item = `<li class="item">                  
                   <p class="text">${toDo}</p>
                   <!-- data presenter div tag with date class  -->
