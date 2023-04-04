@@ -7,10 +7,14 @@ import {
   addTask,
   trashInput,
   today,
-} from "./constants.js"; //named import
+  COMPLETE,
+  EDIT,
+  DELET,
+  CLICK_EVENT,
+} from "/js/constants.js"; //named import
 
 export let LIST = [];
-export let id;
+export let id = 0;
 let tarikh;
 function addToDo(toDo, id, done, edit, trash) {
   if (trash) {
@@ -29,23 +33,23 @@ function addToDo(toDo, id, done, edit, trash) {
                   <p class="text">${toDo}</p>
                   <!-- data presenter div tag with date class  -->
                   <div class = "date" id = "${id}"> Created At:  ${tarikh} </div>
-                  <img src= "icons/done.svg" job = "complete" id ="${id}"/>
-                  <img src = "icons/edit.svg" job = "edit" id = "${id}"/>
-                  <img src = "icons/delete.svg" job="delete" id="${id}"/>
+                  <img src= "icons/done.svg" job = "${COMPLETE}" id ="${id}"/>
+                  <img src = "icons/edit.svg" job = "${EDIT}" id = "${id}"/>
+                  <img src = "icons/delete.svg" job="${DELET}" id="${id}"/>
                   </li> `;
 
-  const position = "beforeend";
+  const position = "afterbegin";
   list.insertAdjacentHTML(position, item);
 }
 
-createTask.addEventListener("click", function (event) {
+createTask.addEventListener(CLICK_EVENT, function (event) {
   if (inputTask.className == "hide") {
     inputTask.classList.remove("hide");
   }
   input.focus();
 });
 
-addTask.addEventListener("click", function (event) {
+addTask.addEventListener(CLICK_EVENT, function (event) {
   const toDo = input.value;
   if (toDo) {
     addToDo(toDo, id, false, false, false);
@@ -57,15 +61,14 @@ addTask.addEventListener("click", function (event) {
       edit: false,
       trash: false,
     });
-    localStorage.setItem("TODO", JSON.stringify(LIST)); //add item to localstorage
+    console.log(LIST);
     id++;
   }
   inputTask.classList.add("hide");
-  input.value = "";
+  input.value = null;
 });
 
-// addTask er pashestrash button addTask interface hide kore dibe
-trashInput.addEventListener("click", function (event) {
+trashInput.addEventListener(CLICK_EVENT, function (event) {
   inputTask.classList.add("hide");
-  input.value = "";
+  input.value = null;
 });
