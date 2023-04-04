@@ -1,8 +1,15 @@
 import { LIST } from "/js/addToTask.js";
 import { list, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
-function completeToDo(element) {
-  LIST[element.id].done = true;
+export default function completeToDo(element) {
+  console.log("complete to do function a aschi");
+
+  let ind = LIST.findIndex((item) => {
+    return item.id == element.id;
+  });
+  console.log("index", ind);
+  LIST[ind].done = true;
+
   element.parentNode.querySelector(".text").style.textDecoration =
     "line-through";
   element.parentNode.querySelector(".text").style.color = "green";
@@ -24,11 +31,3 @@ function completeToDo(element) {
   el.textContent = `Completed in ${duration} days`;
   element.parentNode.appendChild(el);
 }
-
-list.addEventListener(CLICK_EVENT, function (event) {
-  const element = event.target;
-  const elementJob = element.attributes.job.value;
-  if (elementJob == COMPLETE) {
-    completeToDo(element);
-  }
-});

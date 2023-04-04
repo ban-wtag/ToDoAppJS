@@ -17,9 +17,9 @@ export let LIST = [];
 export let id = 0;
 let tarikh;
 function addToDo(toDo, id, done, edit, trash) {
-  if (trash) {
-    return;
-  }
+  // if (trash) {
+  //   return;
+  // }
 
   //Presenting Todays date in task list inside li tag
   const options = {
