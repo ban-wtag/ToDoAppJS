@@ -13,3 +13,7 @@ export const trashInput = document.querySelector(".trashInput");
 
 //required variable
 export const today = new Date();
+export const COMPLETE = "complete";
+export const EDIT = "edit";
+export const DELET = "delete";
+export const CLICK_EVENT = "click";
