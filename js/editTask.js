@@ -1,13 +1,14 @@
 import { LIST } from "/js/addToTask.js";
-import { list, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
+import { list, CLICK_EVENT, EDIT, COMPLETE, DELET } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
 
 export default function editTask(element) {
   element.style.display = "none";
-  element.parentNode.querySelector("[job='delete']").style.display = "none";
-  element.parentNode.querySelector("[job='edit']").style.display = "none";
-  element.parentNode.querySelector("[job='complete']").style.display = "none";
+  element.parentNode.querySelector(`[job="${DELET}"]`).style.display = "none";
+  element.parentNode.querySelector(`[job="${EDIT}"]`).style.display = "none";
+  element.parentNode.querySelector(`[job="${COMPLETE}"]`).style.display =
+    "none";
 
   console.log("parent", element.parentNode.querySelector(".text"));
   const previousContent = element.parentNode.querySelector(".text").innerText;
@@ -27,9 +28,9 @@ export default function editTask(element) {
     element.parentNode.querySelector(".text").contentEditable = false;
     completeToDo(element);
     element.style.display = "inline-block";
-    element.parentNode.querySelector("[job='delete']").style.display =
+    element.parentNode.querySelector(`[job="${DELET}"]`).style.display =
       "inline-block";
-    element.parentNode.querySelector("[job='edit']").style.display = "none";
+    element.parentNode.querySelector(`[job="${EDIT}"]`).style.display = "none";
     saveBtn.style.display = "none";
     checkBtn.style.display = "none";
     deleteBtn.style.display = "none";
