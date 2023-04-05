@@ -66,7 +66,7 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
   }
   inputTask.classList.add("hide");
   input.value = null;
-  if (LIST.length == 4) {
+  if (LIST.length == 10) {
     loadMoreBtn.style.display = "block";
   }
 });
