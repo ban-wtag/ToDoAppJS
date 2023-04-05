@@ -1,5 +1,5 @@
 import {
-  createTask,
+  createTaskButton,
   content,
   list,
   inputTask,
@@ -12,6 +12,7 @@ import {
   EDIT,
   DELET,
   CLICK_EVENT,
+  HIDE,
 } from "/js/constants.js"; //named import
 
 export let LIST = [];
@@ -43,7 +44,7 @@ function addToDo(toDo, id, done, edit, trash) {
   list.insertAdjacentHTML(position, item);
 }
 
-createTask.addEventListener(CLICK_EVENT, function (event) {
+createTaskButton.addEventListener(CLICK_EVENT, function (event) {
   if (inputTask.className == "hide") {
     inputTask.classList.remove("hide");
   }
@@ -62,9 +63,9 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
       edit: false,
       trash: false,
     });
-    id++;
+    id += 1;
   }
-  inputTask.classList.add("hide");
+  inputTask.classList.add(HIDE);
   input.value = null;
   if (LIST.length == 10) {
     loadMoreBtn.style.display = "block";
@@ -72,6 +73,6 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
 });
 
 trashInput.addEventListener(CLICK_EVENT, function (event) {
-  inputTask.classList.add("hide");
+  inputTask.classList.add(HIDE);
   input.value = null;
 });
