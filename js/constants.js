@@ -17,3 +17,7 @@ export const COMPLETE = "complete";
 export const EDIT = "edit";
 export const DELET = "delete";
 export const CLICK_EVENT = "click";
+
+//load more, show less button
+export const loadMoreBtn = document.querySelector("#load-more");
+export const showLessBtn = document.querySelector(".show-less");

@@ -6,6 +6,7 @@ import {
   input,
   addTask,
   trashInput,
+  loadMoreBtn,
   today,
   COMPLETE,
   EDIT,
@@ -66,6 +67,9 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
   }
   inputTask.classList.add("hide");
   input.value = null;
+  if (LIST.length == 4) {
+    loadMoreBtn.style.display = "block";
+  }
 });
 
 trashInput.addEventListener(CLICK_EVENT, function (event) {

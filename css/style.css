@@ -16,3 +16,20 @@
 .hide {
   display: none;
 }
+
+.container .content .item {
+  background-color: white;
+  display: none;
+}
+.container .content .item:nth-child(1),
+.container .content .item:nth-child(2),
+.container .content .item:nth-child(3) {
+  display: block;
+}
+
+.show-less {
+  display: none;
+}
+#load-more {
+  display: none;
+}

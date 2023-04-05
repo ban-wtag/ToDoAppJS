@@ -1,5 +1,5 @@
 import { LIST } from "/js/addToTask.js";
-import { list, CLICK_EVENT, DELET, COMPLETE, EDIT } from "/js/constants.js";
+import { list, loadMoreBtn, CLICK_EVENT, DELET, COMPLETE, EDIT } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
@@ -16,6 +16,9 @@ export default function removeToDos(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
   LIST.splice(idx, 1);
   console.log("after splice list", LIST);
+  if(LIST.length <4){
+    loadMoreBtn.style.display = "none";
+  }
 }
 
 list.addEventListener(CLICK_EVENT, function (event) {
