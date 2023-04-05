@@ -62,7 +62,6 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
       edit: false,
       trash: false,
     });
-    console.log(LIST);
     id++;
   }
   inputTask.classList.add("hide");

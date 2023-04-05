@@ -17,7 +17,7 @@ import removeToDos from "/js/deleteTask.js";
 //   loadMoreBtn.style.display = "block";
 // }
 
-let currentItem = 3;
+let currentItem = 9;
 
 loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
@@ -37,7 +37,7 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   for (var i = currentItem; i < Math.min(currentItem + 3, boxes.length); i++) {
     boxes[i].style.display = "block";
   }
-  currentItem += 3;
+  currentItem += 9;
 
   if (currentItem >= boxes.length) {
     loadMoreBtn.style.display = "none";
@@ -47,7 +47,7 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
 
 showLessBtn.addEventListener(CLICK_EVENT, function () {
   // hide three more items each time the button is clicked
-  let visibleItems = 3;
+  let visibleItems = 9;
   let boxes = [...document.querySelectorAll(".container .content .item")];
   console.log("length", boxes.length);
 

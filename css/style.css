@@ -23,7 +23,13 @@
 }
 .container .content .item:nth-child(1),
 .container .content .item:nth-child(2),
-.container .content .item:nth-child(3) {
+.container .content .item:nth-child(3),
+.container .content .item:nth-child(4),
+.container .content .item:nth-child(5),
+.container .content .item:nth-child(6),
+.container .content .item:nth-child(7),
+.container .content .item:nth-child(8),
+.container .content .item:nth-child(9) {
   display: block;
 }
 
