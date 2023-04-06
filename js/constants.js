@@ -1,14 +1,14 @@
-export const createTaskButton = document.getElementById("createButton");
+export const CREATE_TASK_BUTTON = document.getElementById("createButton");
 
-export const content = document.querySelector(".content");
-export const list = document.getElementById("list");
+export const CONTENT = document.querySelector(".content");
+export const UL_LIST = document.getElementById("list");
 
-export const inputTask = document.getElementById("inputTask");
-export const input = document.getElementById("input");
-export const addTask = document.getElementById("addTaskButton");
-export const trashInput = document.querySelector(".trashInput");
+export const INPUT_TASK = document.getElementById("inputTask");
+export const INPUT = document.getElementById("input");
+export const ADD_TASK = document.getElementById("addTaskButton");
+export const TRASH_INPUT = document.querySelector(".trashInput");
 
-export const today = new Date();
+export const TODAY = new Date();
 export const COMPLETE = "complete";
 export const EDIT = "edit";
 export const DELET = "delete";
