@@ -1,5 +1,5 @@
-import { LIST } from "/js/addToTask.js";
-import { list, CLICK_EVENT, EDIT, COMPLETE, DELET } from "/js/constants.js";
+import { taskLIST } from "/js/addToTask.js";
+import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE, DELET } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
 
@@ -10,7 +10,6 @@ export default function editTask(element) {
   element.parentNode.querySelector(`[job="${COMPLETE}"]`).style.display =
     "none";
 
-  console.log("parent", element.parentNode.querySelector(".text"));
   const previousContent = element.parentNode.querySelector(".text").innerText;
 
   element.parentNode.querySelector(".text").contentEditable = true;
