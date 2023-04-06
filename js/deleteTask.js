@@ -1,5 +1,5 @@
 import { taskLIST } from "/js/addToTask.js";
-import { CLICK_EVENT, DELET } from "/js/constants.js";
+import { CLICK_EVENT, DELET, UL_LIST } from "/js/constants.js";
 
 function removeToDos(element) {
   let index = taskLIST.findIndex((item) => {
@@ -10,7 +10,7 @@ function removeToDos(element) {
   taskLIST.splice(index, 1);
 }
 
-list.addEventListener(CLICK_EVENT, function (event) {
+UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const element = event.target;
   const elementJob = element.attributes.job.value;
   if (elementJob == DELET) {
