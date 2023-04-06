@@ -1,14 +1,11 @@
-import { LIST } from "/js/addToTask.js";
-import { list, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
+import { taskLIST } from "/js/addToTask.js";
+import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
 export default function completeToDo(element) {
-  console.log("complete to do function a aschi");
-
-  let ind = LIST.findIndex((item) => {
+  let index = taskLIST.findIndex((item) => {
     return item.id == element.id;
   });
-  console.log("index", ind);
-  LIST[ind].done = true;
+  taskLIST[index].done = true;
 
   element.parentNode.querySelector(".text").style.textDecoration =
     "line-through";
