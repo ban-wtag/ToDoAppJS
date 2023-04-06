@@ -21,6 +21,7 @@ export const COMPLETED_TASK = "COMPLETED_TASK";
 export const ALL_FILTER = "all";
 export const INCOMPLETE_FILTER = "incompleted";
 export const COMPLETE_FILTER = "completed";
+export const PAGINATED_NO = 9;
 
 //load more, show less button
 export const loadMoreBtn = document.querySelector("#load-more");

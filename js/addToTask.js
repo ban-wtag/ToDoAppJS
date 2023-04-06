@@ -14,6 +14,7 @@ import {
   HIDE,
   loadMoreBtn,
   showLessBtn,
+  PAGINATED_NO,
 } from "/js/constants.js"; //named import
 
 export let taskLIST = [];
@@ -52,7 +53,7 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   console.log("LIST checking in paginaiton", taskLIST);
   if (myList != null) {
     console.log("myList", myList);
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < PAGINATED_NO; i++) {
       var nthChild = myList.children[i];
       nthChild.classList.add("active");
     }
@@ -75,7 +76,7 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   }
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
-  if (taskLIST.length == 10) {
+  if (taskLIST.length == PAGINATED_NO + 1) {
     loadMoreBtn.style.display = "block";
   }
 });

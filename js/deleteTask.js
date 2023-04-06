@@ -1,5 +1,12 @@
 import { taskLIST } from "/js/addToTask.js";
-import { UL_LIST, CLICK_EVENT, DELET, COMPLETE, EDIT } from "/js/constants.js";
+import {
+  UL_LIST,
+  CLICK_EVENT,
+  DELET,
+  COMPLETE,
+  EDIT,
+  PAGINATED_NO,
+} from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
@@ -11,7 +18,7 @@ export default function removeToDos(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
   taskLIST.splice(idx, 1);
   console.log("after splice list", LIST);
-  if (taskLIST.length < 4) {
+  if (taskLIST.length < PAGINATED_NO + 1) {
     loadMoreBtn.style.display = "none";
   }
 }
