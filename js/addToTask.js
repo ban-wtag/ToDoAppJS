@@ -42,6 +42,7 @@ function addToDo(toDo, id, done, edit, trash) {
 
   const position = "afterbegin";
   list.insertAdjacentHTML(position, item);
+  console.log("list element while adding", list);
 }
 
 createTaskButton.addEventListener(CLICK_EVENT, function (event) {
@@ -49,6 +50,16 @@ createTaskButton.addEventListener(CLICK_EVENT, function (event) {
     inputTask.classList.remove("hide");
   }
   input.focus();
+
+  let myList = document.getElementById(list);
+  console.log("LIST checking in paginaiton", LIST);
+  if (myList != null) {
+    console.log("myList", myList);
+    for (let i = 0; i < 9; i++) {
+      var nthChild = myList.children[i];
+      nthChild.classList.add("active");
+    }
+  }
 });
 
 addTask.addEventListener(CLICK_EVENT, function (event) {

@@ -1,6 +1,6 @@
 import { LIST } from "/js/addToTask.js";
 import {
-  createTask,
+  createTaskButton,
   loadMoreBtn,
   showLessBtn,
   list,
@@ -11,11 +11,6 @@ import {
 } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
-
-// console.log("LIST length", LIST.length);
-// if (LIST.length >= 3) {
-//   loadMoreBtn.style.display = "block";
-// }
 
 let currentItem = 9;
 
