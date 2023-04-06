@@ -12,6 +12,7 @@ import {
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
 
+//export default function addPagination() {
 let currentItem = 9;
 
 loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
@@ -40,7 +41,8 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   }
 });
 
-showLessBtn.addEventListener(CLICK_EVENT, function () {
+showLessBtn.addEventListener(CLICK_EVENT, function (e) {
+  e.preventDefault();
   // hide three more items each time the button is clicked
   let visibleItems = 9;
   let boxes = [...document.querySelectorAll(".container .content .item")];
@@ -57,4 +59,6 @@ showLessBtn.addEventListener(CLICK_EVENT, function () {
 
   showLessBtn.style.display = "none";
   loadMoreBtn.style.display = "block";
+  currentItem = 9;
 });
+//}
