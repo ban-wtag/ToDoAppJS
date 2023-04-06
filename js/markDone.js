@@ -2,7 +2,7 @@ import { taskLIST } from "/js/addToTask.js";
 import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
 function completeToDo(element) {
-  let index = LIST.findIndex((item) => {
+  let index = taskLIST.findIndex((item) => {
     return item.id == element.id;
   });
   taskLIST[index].done = true;
