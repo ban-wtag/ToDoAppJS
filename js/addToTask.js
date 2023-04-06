@@ -1,15 +1,4 @@
 import {
-<<<<<<< HEAD
-  createTaskButton,
-  content,
-  list,
-  inputTask,
-  input,
-  addTask,
-  trashInput,
-  loadMoreBtn,
-  today,
-=======
   CREATE_TASK_BUTTON,
   CONTENT,
   UL_LIST,
@@ -18,7 +7,6 @@ import {
   ADD_TASK,
   TRASH_INPUT,
   TODAY,
->>>>>>> editTask
   COMPLETE,
   EDIT,
   DELET,
@@ -49,23 +37,17 @@ function addToDo(taskName, id, done, edit, trash) {
                   </li> `;
 
   const position = "afterbegin";
-<<<<<<< HEAD
-  list.insertAdjacentHTML(position, item);
-  console.log("list element while adding", list);
-=======
   UL_LIST.insertAdjacentHTML(position, item);
->>>>>>> editTask
 }
 
 CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   if (INPUT_TASK.className === HIDE) {
     INPUT_TASK.classList.remove(HIDE);
   }
-<<<<<<< HEAD
-  input.focus();
+  INPUT.focus();
 
-  let myList = document.getElementById(list);
-  console.log("LIST checking in paginaiton", LIST);
+  let myList = document.getElementById(UL_LIST);
+  console.log("LIST checking in paginaiton", taskLIST);
   if (myList != null) {
     console.log("myList", myList);
     for (let i = 0; i < 9; i++) {
@@ -73,9 +55,6 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
       nthChild.classList.add("active");
     }
   }
-=======
-  INPUT.focus();
->>>>>>> editTask
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
@@ -92,16 +71,11 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
     });
     id += 1;
   }
-<<<<<<< HEAD
-  inputTask.classList.add(HIDE);
-  input.value = null;
-  if (LIST.length == 10) {
-    loadMoreBtn.style.display = "block";
-  }
-=======
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
->>>>>>> editTask
+  if (taskLIST.length == 10) {
+    loadMoreBtn.style.display = "block";
+  }
 });
 
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
