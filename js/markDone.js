@@ -1,8 +1,8 @@
 import { taskLIST } from "/js/addToTask.js";
 import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
-function completeToDo(element) {
-  let index = LIST.findIndex((item) => {
+export default function completeToDo(element) {
+  let index = taskLIST.findIndex((item) => {
     return item.id == element.id;
   });
   taskLIST[index].done = true;
@@ -27,11 +27,3 @@ function completeToDo(element) {
   el.textContent = `Completed in ${duration} days`;
   element.parentNode.appendChild(el);
 }
-
-UL_LIST.addEventListener(CLICK_EVENT, function (event) {
-  const element = event.target;
-  const elementJob = element.attributes.job.value;
-  if (elementJob == COMPLETE) {
-    completeToDo(element);
-  }
-});
