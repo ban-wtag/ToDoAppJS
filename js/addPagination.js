@@ -8,12 +8,13 @@ import {
   EDIT,
   COMPLETE,
   DELET,
+  PAGINATED_NO,
 } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
 
 //export default function addPagination() {
-let currentItem = 9;
+let currentItem = PAGINATED_NO;
 
 loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
@@ -30,10 +31,14 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
 
   let boxes = [...document.querySelectorAll(".container .content .item")];
   console.log("List length", boxes.length);
-  for (var i = currentItem; i < Math.min(currentItem + 9, boxes.length); i++) {
+  for (
+    var i = currentItem;
+    i < Math.min(currentItem + PAGINATED_NO, boxes.length);
+    i++
+  ) {
     boxes[i].style.display = "block";
   }
-  currentItem += 9;
+  currentItem += PAGINATED_NO;
 
   if (currentItem >= boxes.length) {
     loadMoreBtn.style.display = "none";
@@ -44,7 +49,7 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
 showLessBtn.addEventListener(CLICK_EVENT, function (e) {
   e.preventDefault();
   // hide three more items each time the button is clicked
-  let visibleItems = 9;
+  let visibleItems = PAGINATED_NO;
   let boxes = [...document.querySelectorAll(".container .content .item")];
   console.log("length", boxes.length);
 
@@ -59,6 +64,6 @@ showLessBtn.addEventListener(CLICK_EVENT, function (e) {
 
   showLessBtn.style.display = "none";
   loadMoreBtn.style.display = "block";
-  currentItem = 9;
+  currentItem = PAGINATED_NO;
 });
 //}
