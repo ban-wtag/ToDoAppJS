@@ -1,10 +1,13 @@
 import { taskLIST } from "/js/addToTask.js";
-import { UL_LIST, CLICK_EVENT, DELET } from "/js/constants.js";
+import { CLICK_EVENT, DELET } from "/js/constants.js";
 
 function removeToDos(element) {
+  let index = taskLIST.findIndex((item) => {
+    return item.id == element.id;
+  });
+  taskLIST[index].trash = true;
   element.parentNode.parentNode.removeChild(element.parentNode);
-  taskLIST[element.id].trash = true;
-  taskLIST.splice(element.id, 1);
+  taskLIST.splice(index, 1);
 }
 
 list.addEventListener(CLICK_EVENT, function (event) {
