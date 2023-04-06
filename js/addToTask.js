@@ -1,12 +1,12 @@
 import {
-  createTaskButton,
-  content,
-  list,
-  inputTask,
-  input,
-  addTask,
-  trashInput,
-  today,
+  CREATE_TASK_BUTTON,
+  CONTENT,
+  UL_LIST,
+  INPUT_TASK,
+  INPUT,
+  ADD_TASK,
+  TRASH_INPUT,
+  TODAY,
   COMPLETE,
   EDIT,
   DELET,
@@ -14,49 +14,45 @@ import {
   HIDE,
 } from "/js/constants.js"; //named import
 
-export let LIST = [];
+export let taskLIST = [];
 export let id = 0;
-let tarikh;
-function addToDo(toDo, id, done, edit, trash) {
+let dateString;
+function addToDo(taskName, id, done, edit, trash) {
   if (trash) {
     return;
   }
-
-  //Presenting Todays date in task list inside li tag
   const options = {
     day: "numeric",
     month: "numeric",
     year: "numeric",
   };
-
-  tarikh = today.toLocaleDateString("en-us", options);
+  dateString = TODAY.toLocaleDateString("en-us", options);
   const item = `<li class="item">                  
-                  <p class="text">${toDo}</p>
-                  <!-- data presenter div tag with date class  -->
-                  <div class = "date" id = "${id}"> Created At:  ${tarikh} </div>
+                  <p class="text">${taskName}</p>
+                  <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
                   <img src= "icons/done.svg" job = "${COMPLETE}" id ="${id}"/>
                   <img src = "icons/edit.svg" job = "${EDIT}" id = "${id}"/>
                   <img src = "icons/delete.svg" job="${DELET}" id="${id}"/>
                   </li> `;
 
   const position = "afterbegin";
-  list.insertAdjacentHTML(position, item);
+  UL_LIST.insertAdjacentHTML(position, item);
 }
 
-createTaskButton.addEventListener(CLICK_EVENT, function (event) {
-  if (inputTask.className == "hide") {
-    inputTask.classList.remove("hide");
+CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
+  if (INPUT_TASK.className === HIDE) {
+    INPUT_TASK.classList.remove(HIDE);
   }
-  input.focus();
+  INPUT.focus();
 });
 
-addTask.addEventListener(CLICK_EVENT, function (event) {
-  const toDo = input.value;
-  if (toDo) {
-    addToDo(toDo, id, false, false, false);
+ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
+  const taskName = INPUT.value;
+  if (taskName) {
+    addToDo(taskName, id, false, false, false);
 
-    LIST.push({
-      name: toDo,
+    taskLIST.push({
+      name: taskName,
       id: id,
       done: false,
       edit: false,
@@ -64,11 +60,11 @@ addTask.addEventListener(CLICK_EVENT, function (event) {
     });
     id += 1;
   }
-  inputTask.classList.add(HIDE);
-  input.value = null;
+  INPUT_TASK.classList.add(HIDE);
+  INPUT.value = null;
 });
 
-trashInput.addEventListener(CLICK_EVENT, function (event) {
-  inputTask.classList.add(HIDE);
-  input.value = null;
+TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
+  INPUT_TASK.classList.add(HIDE);
+  INPUT.value = null;
 });
