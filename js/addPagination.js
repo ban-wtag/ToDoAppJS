@@ -1,9 +1,9 @@
-import { LIST } from "/js/addToTask.js";
+import { taskLIST } from "/js/addToTask.js";
 import {
-  createTaskButton,
+  CREATE_TASK_BUTTON,
   loadMoreBtn,
   showLessBtn,
-  list,
+  UL_LIST,
   CLICK_EVENT,
   EDIT,
   COMPLETE,
@@ -29,7 +29,7 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
 
   let boxes = [...document.querySelectorAll(".container .content .item")];
   console.log("List length", boxes.length);
-  for (var i = currentItem; i < Math.min(currentItem + 3, boxes.length); i++) {
+  for (var i = currentItem; i < Math.min(currentItem + 9, boxes.length); i++) {
     boxes[i].style.display = "block";
   }
   currentItem += 9;
