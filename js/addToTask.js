@@ -12,6 +12,8 @@ import {
   DELET,
   CLICK_EVENT,
   HIDE,
+  loadMoreBtn,
+  showLessBtn,
 } from "/js/constants.js"; //named import
 
 export let taskLIST = [];
