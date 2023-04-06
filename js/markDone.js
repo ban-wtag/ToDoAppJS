@@ -1,8 +1,8 @@
-import { LIST } from "/js/addToTask.js";
-import { list, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
+import { taskLIST } from "/js/addToTask.js";
+import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
 function completeToDo(element) {
-  LIST[element.id].done = true;
+  taskLIST[element.id].done = true;
   element.parentNode.querySelector(".text").style.textDecoration =
     "line-through";
   element.parentNode.querySelector(".text").style.color = "green";
@@ -25,7 +25,7 @@ function completeToDo(element) {
   element.parentNode.appendChild(el);
 }
 
-list.addEventListener(CLICK_EVENT, function (event) {
+UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const element = event.target;
   const elementJob = element.attributes.job.value;
   if (elementJob == COMPLETE) {
