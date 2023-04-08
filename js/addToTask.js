@@ -14,13 +14,10 @@ import {
   HIDE,
 } from "/js/constants.js"; //named import
 
-export let taskLIST = [];
-export let id = 0;
+window.taskList = [];
+window.id = 0;
 let dateString;
-function addToDo(taskName, id, done, edit, trash) {
-  if (trash) {
-    return;
-  }
+function addToDo(taskName, id) {
   const options = {
     day: "numeric",
     month: "numeric",
@@ -49,9 +46,9 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   const taskName = INPUT.value;
   if (taskName) {
-    addToDo(taskName, id, false, false, false);
+    addToDo(taskName, id);
 
-    taskLIST.push({
+    taskList.push({
       name: taskName,
       id: id,
       done: false,
