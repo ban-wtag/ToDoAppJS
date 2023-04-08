@@ -14,8 +14,8 @@ import {
   HIDE,
 } from "/js/constants.js"; //named import
 
-export let taskList = [];
-export let id = 0;
+window.taskList = [];
+window.id = 0;
 let dateString;
 function addToDo(taskName, id) {
   const options = {
