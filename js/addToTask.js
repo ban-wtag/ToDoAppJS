@@ -14,7 +14,7 @@ import {
   HIDE,
 } from "/js/constants.js"; //named import
 
-export let taskLIST = [];
+export let taskList = [];
 export let id = 0;
 let dateString;
 function addToDo(taskName, id) {
@@ -48,7 +48,7 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   if (taskName) {
     addToDo(taskName, id);
 
-    taskLIST.push({
+    taskList.push({
       name: taskName,
       id: id,
       done: false,
