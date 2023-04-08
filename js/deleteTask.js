@@ -5,9 +5,15 @@ function removeTodos(element) {
   let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
-  taskList[index].trash = true;
-  element.parentNode.parentNode.removeChild(element.parentNode);
-  const afterRemovalList = taskList.filter((item) => item.id !== element.id);
+
+  const afterRemovalList = taskList.filter((item) => {
+    if (item.id == element.id) {
+      item.trash = true;
+      element.parentNode.parentNode.removeChild(element.parentNode);
+      return false;
+    }
+    return true;
+  });
   taskList = afterRemovalList;
 }
 
