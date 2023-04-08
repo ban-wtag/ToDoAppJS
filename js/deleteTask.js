@@ -2,7 +2,7 @@ import { UL_LIST, CLICK_EVENT, DELET, COMPLETE, EDIT } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
-function removeTodos(element) {
+export default function removeTodos(element) {
   let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
