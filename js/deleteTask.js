@@ -1,4 +1,3 @@
-//import { taskList } from "/js/addToTask.js";
 import { CLICK_EVENT, DELET, UL_LIST } from "/js/constants.js";
 
 function removeTodos(element) {
