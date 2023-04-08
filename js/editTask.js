@@ -1,4 +1,3 @@
-import { taskLIST } from "/js/addToTask.js";
 import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE, DELET } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";

@@ -3,7 +3,7 @@ import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
 function removeTodos(element) {
-  let index = taskLIST.findIndex((item) => {
+  let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
 
@@ -23,5 +23,9 @@ UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const elementJob = element.attributes.job.value;
   if (elementJob == DELET) {
     removeTodos(element);
+  } else if (elementJob == COMPLETE) {
+    completeToDo(element);
+  } else if (elementJob == EDIT) {
+    editTask(element);
   }
 });
