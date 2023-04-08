@@ -1,11 +1,10 @@
-import { taskLIST } from "/js/addToTask.js";
 import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
 export default function completeToDo(element) {
-  let index = taskLIST.findIndex((item) => {
+  let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
-  taskLIST[index].done = true;
+  taskList[index].done = true;
   element.parentNode.querySelector(".text").style.textDecoration =
     "line-through";
   element.parentNode.querySelector(".text").style.color = "green";
