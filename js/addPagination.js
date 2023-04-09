@@ -18,7 +18,6 @@ let currentItem = PAGINATED_NO;
 loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
   let boxes = [...document.querySelectorAll(".container .content .item")];
-  console.log("List length", boxes.length);
   for (
     var i = currentItem;
     i < Math.min(currentItem + PAGINATED_NO, boxes.length);
