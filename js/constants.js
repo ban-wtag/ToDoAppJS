@@ -14,3 +14,4 @@ export const EDIT = "edit";
 export const DELETE = "delete";
 export const CLICK_EVENT = "click";
 export const HIDE = "hide";
+export const AFTER_BEGIN = "afterbegin";
