@@ -14,8 +14,8 @@ import {
   HIDE,
 } from "/js/constants.js"; //named import
 
-window.taskList = [];
-window.id = 0;
+export let taskList = [];
+export let id = 0;
 let dateString;
 function addToDo(taskName, id) {
   const options = {
@@ -27,9 +27,9 @@ function addToDo(taskName, id) {
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
-                  <img src= "icons/done.svg" job = "${COMPLETE}" id ="${id}"/>
-                  <img src = "icons/edit.svg" job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" job="${DELET}" id="${id}"/>
+                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
+                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELET}" id="${id}"/>
                   </li> `;
 
   const position = "afterbegin";
