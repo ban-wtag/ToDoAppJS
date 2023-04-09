@@ -11,6 +11,6 @@ export const TRASH_INPUT = document.querySelector(".trashInput");
 export const TODAY = new Date();
 export const COMPLETE = "complete";
 export const EDIT = "edit";
-export const DELET = "delete";
+export const DELETE = "delete";
 export const CLICK_EVENT = "click";
 export const HIDE = "hide";
