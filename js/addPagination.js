@@ -6,7 +6,7 @@ import {
   CLICK_EVENT,
   EDIT,
   COMPLETE,
-  DELET,
+  DELETE,
   PAGINATED_NO,
 } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";

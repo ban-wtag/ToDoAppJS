@@ -10,7 +10,7 @@ export default function completeToDo(element, taskList) {
   let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
-  taskLIST[index].done = true;
+  taskList[index].done = true;
   element.parentNode.classList.add(COMPLETED_TASK);
   element.parentNode.querySelector(".text").style.textDecoration =
     "line-through";
