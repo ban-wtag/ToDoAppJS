@@ -9,9 +9,10 @@ import {
   TODAY,
   COMPLETE,
   EDIT,
-  DELET,
+  DELETE,
   CLICK_EVENT,
   HIDE,
+  AFTER_BEGIN,
 } from "/js/constants.js"; //named import
 import removeTodos from "/js/deleteTask.js";
 
@@ -30,10 +31,10 @@ function addToDo(taskName, id) {
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
                   <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
                   <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" data-job="${DELET}" id="${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELETE}" id="${id}"/>
                   </li> `;
 
-  const position = "afterbegin";
+  const position = AFTER_BEGIN;
   UL_LIST.insertAdjacentHTML(position, item);
 }
 
@@ -71,7 +72,7 @@ UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
   //  const elementJob = element.attributes.data-job.value;
-  if (elementJob == DELET) {
+  if (elementJob == DELETE) {
     removeTodos(element, taskList);
   }
 });

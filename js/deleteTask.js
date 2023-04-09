@@ -1,5 +1,5 @@
 //import { taskList } from "/js/addToTask.js";
-import { CLICK_EVENT, DELET, UL_LIST } from "/js/constants.js";
+import { CLICK_EVENT, DELETE, UL_LIST } from "/js/constants.js";
 
 export default function removeTodos(element, taskList) {
   let index = taskList.findIndex((item) => {
