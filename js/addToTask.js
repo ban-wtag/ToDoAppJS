@@ -12,6 +12,7 @@ import {
   DELET,
   CLICK_EVENT,
   HIDE,
+  AFTER_BEGIN,
 } from "/js/constants.js"; //named import
 
 export let taskList = [];
@@ -29,10 +30,10 @@ function addToDo(taskName, id) {
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
                   <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
                   <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" data-job="${DELET}" id="${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELETE}" id="${id}"/>
                   </li> `;
 
-  const position = "afterbegin";
+  const position = AFTER_BEGIN;
   UL_LIST.insertAdjacentHTML(position, item);
 }
 
