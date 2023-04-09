@@ -13,9 +13,11 @@ import {
   CLICK_EVENT,
   HIDE,
 } from "/js/constants.js"; //named import
+import removeTodos from "/js/deleteTask.js";
+import completeToDo from "/js/markDone.js";
 
-window.taskList = [];
-window.id = 0;
+let taskList = [];
+let id = 0;
 let dateString;
 function addToDo(taskName, id) {
   const options = {
@@ -27,9 +29,9 @@ function addToDo(taskName, id) {
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
-                  <img src= "icons/done.svg" job = "${COMPLETE}" id ="${id}"/>
-                  <img src = "icons/edit.svg" job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" job="${DELET}" id="${id}"/>
+                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
+                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELET}" id="${id}"/>
                   </li> `;
 
   const position = "afterbegin";
@@ -64,4 +66,14 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
+});
+
+UL_LIST.addEventListener(CLICK_EVENT, function (event) {
+  const element = event.target;
+  const elementJob = element.getAttribute("data-job");
+  if (elementJob == DELET) {
+    removeTodos(element, taskList);
+  } else if (elementJob == COMPLETE) {
+    completeToDo(element, taskList);
+  }
 });

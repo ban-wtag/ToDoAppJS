@@ -1,6 +1,6 @@
 import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE } from "/js/constants.js";
 
-function completeToDo(element) {
+export default function completeToDo(element, taskList) {
   let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
@@ -9,28 +9,19 @@ function completeToDo(element) {
     "line-through";
   element.parentNode.querySelector(".text").style.color = "green";
   element.style.display = "none";
-  element.parentNode.querySelector(`[job="${EDIT}"]`).style.display = "none";
+  element.parentNode.querySelector(`[data-job="${EDIT}"]`).style.display =
+    "none";
   const taskStartday = element.parentNode.querySelector(".date").innerText;
   let start = taskStartday.replace(/[^0-9]/g, "-");
   start = start.slice(12);
-  const startdate = new Date(start);
+  const startdate = new Date(start).getTime();
 
-  const enddate = new Date();
+  const enddate = new Date().getTime();
   let duration = parseInt((enddate - startdate) / 86400000);
-  if (duration == 0) {
-    duration += 1;
-  }
+  duration += 1;
 
   const el = document.createElement("div");
   el.classList.add("duration");
   el.textContent = `Completed in ${duration} days`;
   element.parentNode.appendChild(el);
 }
-
-UL_LIST.addEventListener(CLICK_EVENT, function (event) {
-  const element = event.target;
-  const elementJob = element.attributes.job.value;
-  if (elementJob == COMPLETE) {
-    completeToDo(element);
-  }
-});
