@@ -16,7 +16,7 @@ export default function removeToDos(element) {
   });
   taskLIST[index].trash = true;
   element.parentNode.parentNode.removeChild(element.parentNode);
-  taskLIST.splice(idx, 1);
+  taskLIST.splice(index, 1);
   console.log("after splice list", LIST);
   if (taskLIST.length < PAGINATED_NO + 1) {
     loadMoreBtn.style.display = "none";
