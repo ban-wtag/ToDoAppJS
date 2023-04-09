@@ -1,4 +1,3 @@
-import { taskLIST } from "/js/addToTask.js";
 import {
   CREATE_TASK_BUTTON,
   loadMoreBtn,
@@ -18,17 +17,6 @@ let currentItem = PAGINATED_NO;
 
 loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
-
-  //   createTask.addEventListener(CLICK_EVENT, function (event) {
-  //     const inputBox = event.target;
-  //     const inputBoxId = inputBox.attributes.id.value;
-  //     if (inputBoxId == "input") {
-  //       console.log("miracle happened target caught");
-  //       currentItem += 1;
-  //       console.log("will happen disaster");
-  //     }
-  //   });
-
   let boxes = [...document.querySelectorAll(".container .content .item")];
   console.log("List length", boxes.length);
   for (

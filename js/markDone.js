@@ -1,5 +1,10 @@
-import { taskLIST } from "/js/addToTask.js";
-import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE, COMPLETED_TASK } from "/js/constants.js";
+import {
+  UL_LIST,
+  CLICK_EVENT,
+  EDIT,
+  COMPLETE,
+  COMPLETED_TASK,
+} from "/js/constants.js";
 
 export default function completeToDo(element, taskList) {
   let index = taskList.findIndex((item) => {

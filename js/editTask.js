@@ -1,10 +1,10 @@
-import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE, DELET } from "/js/constants.js";
+import { UL_LIST, CLICK_EVENT, EDIT, COMPLETE, DELETE } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
 import removeToDos from "/js/deleteTask.js";
 
 export default function editTask(element, taskList) {
   element.style.display = "none";
-  element.parentNode.querySelector(`[data-job="${DELET}"]`).style.display =
+  element.parentNode.querySelector(`[data-job="${DELETE}"]`).style.display =
     "none";
   element.parentNode.querySelector(`[data-job="${EDIT}"]`).style.display =
     "none";
@@ -28,7 +28,7 @@ export default function editTask(element, taskList) {
     element.parentNode.querySelector(".text").contentEditable = false;
     completeToDo(element, taskList);
     element.style.display = "inline-block";
-    element.parentNode.querySelector(`[data-job="${DELET}"]`).style.display =
+    element.parentNode.querySelector(`[data-job="${DELETE}"]`).style.display =
       "inline-block";
     element.parentNode.querySelector(`[data-job="${EDIT}"]`).style.display =
       "none";
