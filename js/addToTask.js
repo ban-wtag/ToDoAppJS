@@ -15,6 +15,7 @@ import {
 } from "/js/constants.js"; //named import
 import removeTodos from "/js/deleteTask.js";
 import completeToDo from "/js/markDone.js";
+import editTask from "/js/editTask.js";
 
 let taskList = [];
 let id = 0;
@@ -76,6 +77,6 @@ UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   } else if (elementJob == COMPLETE) {
     completeToDo(element, taskList);
   } else if (elementJob == EDIT) {
-    editTask(element);
+    editTask(element, taskList);
   }
 });
