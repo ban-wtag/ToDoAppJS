@@ -16,15 +16,14 @@ import {
   showLessBtn,
   PAGINATED_NO,
 } from "/js/constants.js"; //named import
+import removeTodos from "/js/deleteTask.js";
+import completeToDo from "/js/markDone.js";
+import editTask from "/js/editTask.js";
 
-export let taskLIST = [];
-export let id = 0;
+let taskList = [];
+let id = 0;
 let dateString;
-function addToDo(taskName, id, done, edit, trash) {
-  // if (trash) {
-  //   return;
-  // }
-
+function addToDo(taskName, id) {
   const options = {
     day: "numeric",
     month: "numeric",
@@ -34,9 +33,9 @@ function addToDo(taskName, id, done, edit, trash) {
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
-                  <img src= "icons/done.svg" job = "${COMPLETE}" id ="${id}"/>
-                  <img src = "icons/edit.svg" job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" job="${DELET}" id="${id}"/>
+                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
+                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELET}" id="${id}"/>
                   </li> `;
 
   const position = "afterbegin";
@@ -63,9 +62,9 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   const taskName = INPUT.value;
   if (taskName) {
-    addToDo(taskName, id, false, false, false);
+    addToDo(taskName, id);
 
-    taskLIST.push({
+    taskList.push({
       name: taskName,
       id: id,
       done: false,
@@ -84,4 +83,16 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
+});
+
+UL_LIST.addEventListener(CLICK_EVENT, function (event) {
+  const element = event.target;
+  const elementJob = element.getAttribute("data-job");
+  if (elementJob == DELET) {
+    removeTodos(element, taskList);
+  } else if (elementJob == COMPLETE) {
+    completeToDo(element, taskList);
+  } else if (elementJob == EDIT) {
+    editTask(element, taskList);
+  }
 });

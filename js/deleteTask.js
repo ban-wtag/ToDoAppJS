@@ -10,27 +10,14 @@ import {
 import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
-export default function removeToDos(element) {
-  let index = taskLIST.findIndex((item) => {
+export default function removeTodos(element, taskList) {
+  let index = taskList.findIndex((item) => {
     return item.id == element.id;
   });
-  taskLIST[index].trash = true;
+  taskList[index].trash = true;
   element.parentNode.parentNode.removeChild(element.parentNode);
   taskLIST.splice(index, 1);
-  console.log("after splice list", LIST);
   if (taskLIST.length < PAGINATED_NO + 1) {
     loadMoreBtn.style.display = "none";
   }
 }
-
-UL_LIST.addEventListener(CLICK_EVENT, function (event) {
-  const element = event.target;
-  const elementJob = element.attributes.job.value;
-  if (elementJob == DELET) {
-    removeToDos(element);
-  } else if (elementJob == COMPLETE) {
-    completeToDo(element);
-  } else if (elementJob == EDIT) {
-    editTask(element);
-  }
-});

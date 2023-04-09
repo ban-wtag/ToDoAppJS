@@ -1,10 +1,5 @@
 .date {
   position: relative;
-  left: 4.19%;
-  right: 61.52%;
-  top: 49.08%;
-  bottom: 41.1%;
-
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
@@ -38,4 +33,19 @@
 }
 #load-more {
   display: none;
+}
+input {
+  height: 30px;
+}
+
+#inputTask input,
+#inputTask button,
+#inputTask .trashInput {
+  margin: 7px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+#inputTask .trashInput {
+  margin-left: 5px;
+  margin-top: 3px;
 }
