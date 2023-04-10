@@ -68,13 +68,18 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT.value = null;
 });
 
+let removeListener = false;
 
-
-UL_LIST.addEventListener(CLICK_EVENT, function (event) {
+function onActionTodo(event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
   if (elementJob == DELETE_TODO) {
     removeTodo(element.parentNode, taskList, element.id);
-    UL_LIST.removeEventListener(CLICK_EVENT, event);
   }
-});
+  removeListener = true;
+}
+
+UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
+if (removeListener) {
+  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+}
