@@ -1,12 +1,6 @@
-import { UL_LIST, CLICK_EVENT, DELETE, COMPLETE, EDIT } from "/js/constants.js";
-import completeToDo from "/js/markDone.js";
-import editTask from "/js/editTask.js";
-
-export default function removeTodos(element, taskList) {
-  let index = taskList.findIndex((item) => {
-    return item.id == element.id;
-  });
+export default function removeTodo(element, taskList) {
+  const index = taskList.findIndex((item) => item.id == element.id);
   taskList[index].trash = true;
-  element.parentNode.parentNode.removeChild(element.parentNode);
+  element.parentNode.remove();
   taskList.splice(index, 1);
 }
