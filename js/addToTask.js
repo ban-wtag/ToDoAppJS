@@ -9,7 +9,7 @@ import {
   TODAY,
   COMPLETE,
   EDIT,
-  DELETE,
+  DELETE_TODO,
   CLICK_EVENT,
   HIDE,
   loadMoreBtn,
@@ -17,11 +17,11 @@ import {
   PAGINATED_NO,
   AFTER_BEGIN,
 } from "/js/constants.js"; //named import
-import removeTodos from "/js/deleteTask.js";
+import removeTodo from "/js/deleteTask.js";
 import completeToDo from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 
-let taskList = [];
+const taskList = [];
 let id = 0;
 let dateString;
 function addToDo(taskName, id) {
@@ -36,7 +36,7 @@ function addToDo(taskName, id) {
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
                   <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
                   <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" data-job="${DELETE}" id="${id}"/>
+                  <img src = "icons/delete.svg" data-job="${DELETE_TODO}" id="${id}"/>
                   </li> `;
 
   const position = AFTER_BEGIN;
@@ -88,11 +88,14 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
 UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
-  if (elementJob == DELETE) {
-    removeTodos(element, taskList);
+  if (elementJob == DELETE_TODO) {
+    removeTodo(element, taskList);
+    UL_LIST.removeEventListener(CLICK_EVENT, event);
   } else if (elementJob == COMPLETE) {
     completeToDo(element, taskList);
+    UL_LIST.removeEventListener(CLICK_EVENT, event);
   } else if (elementJob == EDIT) {
     editTask(element, taskList);
+    UL_LIST.removeEventListener(CLICK_EVENT, event);
   }
 });
