@@ -4,8 +4,6 @@ import {
   CLICK_EVENT,
   PAGINATED_NO,
 } from "/js/constants.js";
-import completeToDo from "/js/markDone.js";
-import removeToDos from "/js/deleteTask.js";
 
 let currentItem = PAGINATED_NO;
 

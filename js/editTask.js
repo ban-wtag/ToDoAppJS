@@ -1,91 +1,91 @@
 import {
-  UL_LIST,
   CLICK_EVENT,
   EDIT,
   COMPLETE,
   DELETE_TODO,
 } from "/js/constants.js";
 import completeToDo from "/js/markDone.js";
-import removeToDo from "/js/deleteTask.js";
 
-export default function editTask(element, taskList) {
-  element.style.display = "none";
-  element.parentNode.querySelector(
-    `[data-job="${DELETE_TODO}"]`
-  ).style.display = "none";
-  element.parentNode.querySelector(`[data-job="${EDIT}"]`).style.display =
-    "none";
-  element.parentNode.querySelector(`[data-job="${COMPLETE}"]`).style.display =
-    "none";
+export default function editTask(element, taskList, id) {
+  element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "none";
+  element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
+  element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
 
-  const previousContent = element.parentNode.querySelector(".text").innerText;
+  const previousContent = element.querySelector(".text").innerText;
 
-  element.parentNode.querySelector(".text").contentEditable = true;
-  element.parentNode.querySelector(".text").focus();
-
+  element.querySelector(".text").contentEditable = true;
+  element.querySelector(".text").focus();
+  let removeListener = false;
   const checkBtn = document.createElement("img");
   checkBtn.setAttribute("src", "icons/done.svg");
   checkBtn.setAttribute("data-job", "editCheck");
-  checkBtn.setAttribute("id", `${element.id}`);
-  element.parentNode.appendChild(checkBtn);
+  checkBtn.setAttribute("id", `${id}`);
+  element.appendChild(checkBtn);
 
-  checkBtn.addEventListener(CLICK_EVENT, function (event5) {
-    event5.stopPropagation();
-    event5.preventDefault();
-    element.parentNode.querySelector(".text").contentEditable = false;
-    completeToDo(element, taskList);
-    element.style.display = "inline-block";
-    element.parentNode.querySelector(
-      `[data-job="${DELETE_TODO}"]`
-    ).style.display = "inline-block";
-    element.parentNode.querySelector(`[data-job="${EDIT}"]`).style.display =
-      "none";
+  function checkButtonAction (event){
+    event.stopPropagation();
+    event.preventDefault();
+    element.querySelector(".text").contentEditable = false;
+    completeToDo(element, taskList, id); 
+    element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "inline-block";
+    element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
     saveBtn.style.display = "none";
     checkBtn.style.display = "none";
     deleteBtn.style.display = "none";
-    checkBtn.removeEventListener(CLICK_EVENT, event5);
-  });
+    removeListener = true;
+  }
+
+  checkBtn.addEventListener(CLICK_EVENT, checkButtonAction);
+  if(removeListener){
+    checkBtn.removeEventListener(CLICK_EVENT, checkButtonAction);
+  }
 
   const deleteBtn = document.createElement("img");
   deleteBtn.setAttribute("src", "icons/delete.svg");
   deleteBtn.setAttribute("data-job", "editDelete");
-  deleteBtn.setAttribute("id", `${element.id}`);
-  element.parentNode.appendChild(deleteBtn);
+  deleteBtn.setAttribute("id", `${id}`);
+  element.appendChild(deleteBtn);
 
-  deleteBtn.addEventListener(CLICK_EVENT, function (event4) {
-    event4.stopPropagation();
-    event4.preventDefault();
-    element.parentNode.querySelector(".text").contentEditable = false;
-    element.parentNode.querySelector(".text").innerText = previousContent;
-    element.style.display = "inline-block";
-    element.parentNode.querySelector("[data-job='delete']").style.display =
-      "inline-block";
-    element.parentNode.querySelector("[data-job='complete']").style.display =
-      "inline-block";
+  function deleteButtonAction (event) {
+    event.stopPropagation();
+    event.preventDefault();
+    element.querySelector(".text").contentEditable = false;
+    element.querySelector(".text").innerText = previousContent;
+    element.querySelector(`[data-job="${EDIT}"]`).style.display = "inline-block"; 
+    element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "inline-block";
+    element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "inline-block";
     saveBtn.style.display = "none";
     checkBtn.style.display = "none";
     deleteBtn.style.display = "none";
-    deleteBtn.removeEventListener(CLICK_EVENT, event4);
-  });
+    removeListener = true;
+  }
+
+  deleteBtn.addEventListener(CLICK_EVENT, deleteButtonAction);
+  if(removeListener){
+    deleteBtn.removeEventListener(CLICK_EVENT, deleteButtonAction);
+  }
 
   const saveBtn = document.createElement("button");
   saveBtn.innerText = "Save";
   saveBtn.classList.add("saveBtn");
-  element.parentNode.appendChild(saveBtn);
+  element.appendChild(saveBtn);
 
-  saveBtn.addEventListener(CLICK_EVENT, function (event2) {
-    event2.stopPropagation();
-    event2.preventDefault();
-    element.parentNode.querySelector(".text").contentEditable = false;
-    element.style.display = "inline-block";
+  function saveButtonAction (event) {
+    event.stopPropagation();
+    event.preventDefault();
+    element.querySelector(".text").contentEditable = false;
     deleteBtn.style.display = "none";
-    element.parentNode.querySelector(".saveBtn").style.display = "none";
-    element.parentNode.querySelector("[data-job='delete']").style.display =
-      "inline-block";
-    element.parentNode.querySelector("[data-job='complete']").style.display =
-      "inline-block";
+    element.querySelector(".saveBtn").style.display = "none";
+    element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "inline-block";
+    element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "inline-block";
+    element.querySelector(`[data-job="${EDIT}"]`).style.display = "inline-block"; 
     saveBtn.style.display = "none";
     checkBtn.style.display = "none";
-    saveBtn.removeEventListener(CLICK_EVENT, event2);
-  });
+    removeListener = true;
+  }
+
+  saveBtn.addEventListener(CLICK_EVENT, saveButtonAction);
+  if(removeListener){
+    saveBtn.removeEventListener(CLICK_EVENT, saveButtonAction);
+  }
 }
