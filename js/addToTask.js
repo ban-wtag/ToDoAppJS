@@ -73,6 +73,6 @@ UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const elementJob = element.getAttribute("data-job");
   if (elementJob == DELETE_TODO) {
     removeTodo(element, taskList);
-    element.removeEventListener(CLICK_EVENT, event);
+    UL_LIST.removeEventListener(CLICK_EVENT, event);
   }
 });
