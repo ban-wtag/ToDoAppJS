@@ -68,11 +68,13 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT.value = null;
 });
 
+
+
 UL_LIST.addEventListener(CLICK_EVENT, function (event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
   if (elementJob == DELETE_TODO) {
-    removeTodo(element, taskList);
+    removeTodo(element.parentNode, taskList, element.id);
     UL_LIST.removeEventListener(CLICK_EVENT, event);
   }
 });
