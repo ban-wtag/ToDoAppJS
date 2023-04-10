@@ -69,14 +69,20 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT.value = null;
 });
 
-UL_LIST.addEventListener(CLICK_EVENT, function (event) {
+let removeListener = false;
+
+function onActionTodo(event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
   if (elementJob == DELETE_TODO) {
-    removeTodo(element, taskList);
-    UL_LIST.removeEventListener(CLICK_EVENT, event);
+    removeTodo(element.parentNode, taskList, element.id);
   } else if (elementJob == COMPLETE) {
-    completeToDo(element, taskList);
-    UL_LIST.removeEventListener(CLICK_EVENT, event);
+    completeToDo(element.parentNode, taskList, element.id);
   }
-});
+  removeListener = true;
+}
+
+UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
+if (removeListener) {
+  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+}
