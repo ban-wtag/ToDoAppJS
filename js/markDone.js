@@ -1,4 +1,4 @@
-import { EDIT, COMPLETE } from "/js/constants.js";
+import { EDIT, COMPLETE, COMPLETED_TASK } from "/js/constants.js";
 
 export default function completeToDo(element, taskList, id) {
   const index = taskList.findIndex((item) => item.id === id);
