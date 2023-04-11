@@ -75,12 +75,12 @@ let removeListener = false;
 function onActionTodo(event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
-  if (elementJob == DELETE_TODO) {
-    removeTodo(element.parentNode, taskList, element.id);
-  } else if (elementJob == COMPLETE) {
-    completeToDo(element.parentNode, taskList, element.id);
-  } else if (elementJob == EDIT) {
-    editTask(element.parentNode, taskList, element.id);
+  if (elementJob === DELETE_TODO) {
+    removeTodo(element.parentNode, taskList, Number(element.id));
+  } else if (elementJob === COMPLETE) {
+    completeToDo(element.parentNode, taskList, Number(element.id));
+  } else if (elementJob === EDIT) {
+    editTask(element.parentNode, taskList, Number(element.id));
   }
   removeListener = true;
 }
