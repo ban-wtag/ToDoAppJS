@@ -1,7 +1,7 @@
 import { EDIT, COMPLETE } from "/js/constants.js";
 
 export default function completeToDo(element, taskList, id) {
-  const index = taskList.findIndex((item) => item.id.toString() ===id);
+  const index = taskList.findIndex((item) => item.id === id);
   taskList[index].done = true;
 
   element.querySelector(".text").style.textDecoration = "line-through";
@@ -9,7 +9,7 @@ export default function completeToDo(element, taskList, id) {
   element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
   element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
   element.classList.add(COMPLETED_TASK);
- 
+
   const taskStartday = element.querySelector(".date").innerText;
   let start = taskStartday.replace(/[^0-9]/g, "-");
   start = start.slice(12);
