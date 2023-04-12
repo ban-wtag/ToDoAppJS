@@ -15,7 +15,7 @@ import {
   AFTER_BEGIN,
 } from "/js/constants.js"; //named import
 import removeTodo from "/js/deleteTask.js";
-import completeToDo from "/js/markDone.js";
+import markTodoAsCompleted from "/js/markDone.js";
 
 const taskList = [];
 let id = 0;
@@ -77,7 +77,7 @@ function onActionTodo(event) {
   if (elementJob === DELETE_TODO) {
     removeTodo(element.parentNode, taskList, Number(element.id));
   } else if (elementJob === COMPLETE) {
-    completeToDo(element.parentNode, taskList, Number(element.id));
+    markTodoAsCompleted(element.parentNode, taskList, Number(element.id));
   }
   removeListener = true;
 }
