@@ -1,18 +1,6 @@
 import { EDIT, COMPLETE } from "/js/constants.js";
-
-function calculateDuration(startdate) {
-  const enddate = new Date().getTime();
-  let duration = parseInt((enddate - startdate) / 86400000);
-  duration += 1;
-  return duration;
-}
-
-function createDurationElement(duration, element) {
-  const el = document.createElement("div");
-  el.classList.add("duration");
-  el.textContent = `Completed in ${duration} days`;
-  element.appendChild(el);
-}
+import calculateDuration from "/js/utility/mDDuration.js";
+import createDurationElement from "/js/utility/mDDuElement.js";
 
 export default function markTodoAsCompleted(element, taskList, id) {
   const index = taskList.findIndex((item) => item.id === id);
