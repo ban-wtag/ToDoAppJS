@@ -1,6 +1,6 @@
 export default function createDurationElement(duration, element) {
-  const el = document.createElement("div");
-  el.classList.add("duration");
-  el.textContent = `Completed in ${duration} days`;
-  element.appendChild(el);
+  const taskCompleteDuration = document.createElement("div");
+  taskCompleteDuration.classList.add("duration");
+  taskCompleteDuration.textContent = `Completed in ${duration} days`;
+  element.appendChild(taskCompleteDuration);
 }

@@ -6,16 +6,18 @@ export default function markTodoAsCompleted(element, taskList, id) {
   const index = taskList.findIndex((item) => item.id === id);
   taskList[index].done = true;
 
-  element.querySelector(".text").style.textDecoration = "line-through";
-  element.querySelector(".text").style.color = "green";
+  const text = element.querySelector(".text").style;
+  text.textDecoration = "line-through";
+  text.color = "green";
+
   element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
   element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
   element.classList.add(COMPLETED_TASK);
 
   const taskStartday = element.querySelector(".date").innerText;
-  let start = taskStartday.replace(/[^0-9]/g, "-");
-  start = start.slice(12);
-  const startdate = new Date(start).getTime();
+  let taskStartDateString = taskStartday.replace(/[^0-9]/g, "-");
+  taskStartDateString = taskStartDateString.slice(12);
+  const startdate = new Date(taskStartDateString).getTime();
 
   const duration = calculateDuration(startdate);
   createDurationElement(duration, element);
