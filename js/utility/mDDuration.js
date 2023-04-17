@@ -1,5 +1,7 @@
 export default function calculateDuration(startDate) {
   const endDate = new Date().getTime();
-  let duration = parseInt((endDate - startDate) / 86400000) + 1;
-  return duration;
+  if(startDate>endDate){
+    return -1;
+  }
+  return parseInt((endDate - startDate) / 86400000) + 1;
 }
