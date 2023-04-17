@@ -4,8 +4,9 @@ import createDurationElement from "/js/utility/mDDuElement.js";
 
 export default function markTodoAsCompleted(element, taskList, id) {
   const index = taskList.findIndex((item) => item.id === id);
-  taskList[index].done = true;
-
+  if (index !== -1) {
+    taskList[index].done = true;
+  }
   const text = element.querySelector(".text").style;
   text.textDecoration = "line-through";
   text.color = "green";
@@ -13,11 +14,12 @@ export default function markTodoAsCompleted(element, taskList, id) {
   element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
   element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
 
-  const taskStartday = element.querySelector(".date").innerText;
-  let taskStartDateString = taskStartday.replace(/[^0-9]/g, "-");
+  const taskStartDay = element.querySelector(".date").innerText;
+  let taskStartDateString = taskStartDay.replace(/[^0-9]/g, "-");
   taskStartDateString = taskStartDateString.slice(12);
-  const startdate = new Date(taskStartDateString).getTime();
+  const startDate = new Date(taskStartDateString).getTime();
 
-  const duration = calculateDuration(startdate);
-  createDurationElement(duration, element);
+  const duration = calculateDuration(startDate);
+  const taskCompleteDuration = createDurationElement(duration);
+  element.appendChild(taskCompleteDuration);
 }
