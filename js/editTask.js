@@ -1,7 +1,7 @@
 import { CLICK_EVENT, EDIT, COMPLETE, DELETE_TODO } from "/js/constants.js";
-import saveButtonActionTodo from "/js/utility/eTSaveBtnAct.js";
-import deleteButtonActionTodo from "/js/utility/eTDelBtnAct.js";
-import checkButtonActionTodo from "/js/utility/eTChkBtnAct.js";
+import saveButtonActionTodo from "/js/utility/SaveBtnAction.js";
+import deleteButtonActionTodo from "/js/utility/DltBtnAction.js";
+import checkButtonActionTodo from "/js/utility/ChkBtnAction.js";
 
 export default function editTask(element, taskList, id) {
   element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "none";
