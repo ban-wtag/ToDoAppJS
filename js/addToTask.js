@@ -20,6 +20,7 @@ import {
 import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import editTask from "/js/editTask.js";
+import updateVisibility from "/js/utility/updateVisibility.js";
 
 const taskList = [];
 let id = 0;
@@ -48,15 +49,6 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
     INPUT_TASK.classList.remove(HIDE);
   }
   INPUT.focus();
-
-  let myList = document.getElementById(UL_LIST);
-  if (myList != null) {
-    console.log("myList", myList);
-    for (let i = 0; i < PAGINATED_NO; i++) {
-      var nthChild = myList.children[i];
-      nthChild.classList.add("active");
-    }
-  }
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
@@ -75,7 +67,9 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   }
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
+  updateVisibility ();
   if (taskList.length == PAGINATED_NO + 1) {
+    console.log("addPagination starts on add_task");
     loadMoreBtn.style.display = "block";
   }
 });
