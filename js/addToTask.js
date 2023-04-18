@@ -87,5 +87,5 @@ function onActionTodo(event) {
 
 UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
 if (removeListener) {
-  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+  UL_LIST.removeListener(CLICK_EVENT, onActionTodo);
 }

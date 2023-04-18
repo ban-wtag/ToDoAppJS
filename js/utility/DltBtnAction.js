@@ -1,33 +1,37 @@
 import { CLICK_EVENT, EDIT, COMPLETE, DELETE_TODO } from "/js/constants.js";
 
-export default function deleteButtonActionTodo(
-  element,
-  saveBtn,
-  deleteBtn,
-  checkBtn
+export default function handleDeleteButtonClick(
+  todoItemElement,
+  saveButtonElement,
+  deleteButtonElement,
+  completeButtonElement
 ) {
   let removeListener = false;
-  const previousContent = element.querySelector(".text").innerText;
+  const previousContent = todoItemElement.querySelector(".text").innerText;
 
-  function deleteButtonAction(event) {
+  function handleDeleteButton(event) {
     event.stopPropagation();
     event.preventDefault();
-    element.querySelector(".text").contentEditable = false;
-    element.querySelector(".text").innerText = previousContent;
-    element.querySelector(`[data-job="${EDIT}"]`).style.display =
+    const errorMessage = todoItemElement.querySelector("#error-message");
+    if (errorMessage) {
+      todoItemElement.removeChild(errorMessage);
+    }
+    todoItemElement.querySelector(".text").contentEditable = false;
+    todoItemElement.querySelector(".text").innerText = previousContent;
+    todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display =
       "inline-block";
-    element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display =
+    todoItemElement.querySelector(`[data-job="${DELETE_TODO}"]`).style.display =
       "inline-block";
-    element.querySelector(`[data-job="${COMPLETE}"]`).style.display =
+    todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
       "inline-block";
-    saveBtn.style.display = "none";
-    checkBtn.style.display = "none";
-    deleteBtn.style.display = "none";
+    saveButtonElement.style.display = "none";
+    completeButtonElement.style.display = "none";
+    deleteButtonElement.style.display = "none";
     removeListener = true;
   }
 
-  deleteBtn.addEventListener(CLICK_EVENT, deleteButtonAction);
+  deleteButtonElement.addEventListener(CLICK_EVENT, handleDeleteButton);
   if (removeListener) {
-    deleteBtn.removeEventListener(CLICK_EVENT, deleteButtonAction);
+    deleteButtonElement.removeEventListener(CLICK_EVENT, handleDeleteButton);
   }
 }
