@@ -1,15 +1,15 @@
-import { CLICK_EVENT, EDIT, COMPLETE, DELETE_TODO } from "/js/constants.js";
-import saveButtonActionTodo from "/js/utility/SaveBtnAction.js";
-import deleteButtonActionTodo from "/js/utility/DltBtnAction.js";
-import checkButtonActionTodo from "/js/utility/ChkBtnAction.js";
+import { EDIT, COMPLETE, DELETE_TODO } from "/js/constants.js";
+import handleSaveButtonClick from "/js/utility/SaveBtnAction.js";
+import handleDeleteButtonClick from "/js/utility/DltBtnAction.js";
+import handleCheckButtonClick from "/js/utility/ChkBtnAction.js";
 
 export default function editTask(element, taskList, id) {
   element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "none";
   element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
   element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
-
-  element.querySelector(".text").contentEditable = true;
-  element.querySelector(".text").focus();
+  const textElement = element.querySelector(".text");
+  textElement.contentEditable = true;
+  textElement.focus();
 
   const saveBtn = document.createElement("button");
   saveBtn.innerText = "Save";
@@ -28,9 +28,9 @@ export default function editTask(element, taskList, id) {
   deleteBtn.setAttribute("id", `${id}`);
   element.appendChild(deleteBtn);
 
-  saveButtonActionTodo(element, saveBtn, deleteBtn, checkBtn);
+  handleSaveButtonClick(element, saveBtn, deleteBtn, checkBtn);
 
-  checkButtonActionTodo(element, taskList, id, saveBtn, deleteBtn, checkBtn);
+  handleCheckButtonClick(element, taskList, id, saveBtn, deleteBtn, checkBtn);
 
-  deleteButtonActionTodo(element, saveBtn, deleteBtn, checkBtn);
+  handleDeleteButtonClick(element, saveBtn, deleteBtn, checkBtn);
 }
