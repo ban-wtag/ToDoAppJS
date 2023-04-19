@@ -3,34 +3,42 @@ import handleSaveButtonClick from "/js/utility/SaveBtnAction.js";
 import handleDeleteButtonClick from "/js/utility/DltBtnAction.js";
 import handleCheckButtonClick from "/js/utility/ChkBtnAction.js";
 
-export default function editTask(element, taskList, id) {
-  element.querySelector(`[data-job="${DELETE_TODO}"]`).style.display = "none";
-  element.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
-  element.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
-  const textElement = element.querySelector(".text");
+export default function editTask(todoItemElement, taskList, elementId) {
+  todoItemElement.querySelector(`[data-job="${DELETE_TODO}"]`).style.display =
+    "none";
+  todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
+  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
+    "none";
+  const textElement = todoItemElement.querySelector(".text");
   textElement.contentEditable = true;
   textElement.focus();
 
   const saveBtn = document.createElement("button");
   saveBtn.innerText = "Save";
   saveBtn.classList.add("saveBtn");
-  element.appendChild(saveBtn);
+  todoItemElement.appendChild(saveBtn);
 
   const checkBtn = document.createElement("img");
   checkBtn.setAttribute("src", "icons/done.svg");
   checkBtn.setAttribute("data-job", "editCheck");
-  checkBtn.setAttribute("id", `${id}`);
-  element.appendChild(checkBtn);
+  checkBtn.setAttribute("id", `${elementId}`);
+  todoItemElement.appendChild(checkBtn);
 
   const deleteBtn = document.createElement("img");
   deleteBtn.setAttribute("src", "icons/delete.svg");
   deleteBtn.setAttribute("data-job", "editDelete");
-  deleteBtn.setAttribute("id", `${id}`);
-  element.appendChild(deleteBtn);
+  deleteBtn.setAttribute("id", `${elementId}`);
+  todoItemElement.appendChild(deleteBtn);
 
-  handleSaveButtonClick(element, saveBtn, deleteBtn, checkBtn);
+  handleSaveButtonClick(todoItemElement, saveBtn, deleteBtn, checkBtn);
 
-  handleCheckButtonClick(element, taskList, id, saveBtn, deleteBtn, checkBtn);
-
-  handleDeleteButtonClick(element, saveBtn, deleteBtn, checkBtn);
+  handleCheckButtonClick(
+    todoItemElement,
+    taskList,
+    elementId,
+    saveBtn,
+    deleteBtn,
+    checkBtn
+  );
+  handleDeleteButtonClick(todoItemElement, saveBtn, deleteBtn, checkBtn);
 }

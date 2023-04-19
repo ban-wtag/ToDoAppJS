@@ -83,9 +83,11 @@ function onActionTodo(event) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
   removeListener = true;
+  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+  addTodoClickListener();
 }
 
-UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
-if (removeListener) {
-  UL_LIST.removeListener(CLICK_EVENT, onActionTodo);
+function addTodoClickListener() {
+  UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
 }
+addTodoClickListener();

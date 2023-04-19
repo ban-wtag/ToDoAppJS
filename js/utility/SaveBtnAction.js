@@ -7,8 +7,6 @@ export default function handleSaveButtonClick(
   deleteButtonElement,
   completeButtonElement
 ) {
-  let removeListener = false;
-
   function handleSaveButton(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -37,12 +35,8 @@ export default function handleSaveButtonClick(
       todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display =
         "inline-block";
       completeButtonElement.style.display = "none";
-      removeListener = true;
+      saveButtonElement.removeEventListener(CLICK_EVENT, handleSaveButton);
     }
   }
-
   saveButtonElement.addEventListener(CLICK_EVENT, handleSaveButton);
-  if (removeListener) {
-    saveButtonElement.removeEventListener(CLICK_EVENT, handleSaveButton);
-  }
 }
