@@ -18,8 +18,7 @@ export default function markTodoAsCompleted(
   textStyle.textDecoration = "line-through";
   textStyle.color = "green";
 
-  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
-    "none";
+  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
   todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
 
   const taskStartDay = todoItemElement.querySelector(".date").innerText;
