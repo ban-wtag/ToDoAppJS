@@ -6,7 +6,6 @@ export default function handleDeleteButtonClick(
   deleteButtonElement,
   completeButtonElement
 ) {
-  let removeListener = false;
   const previousContent = todoItemElement.querySelector(".text").innerText;
 
   function handleDeleteButton(event) {
@@ -27,11 +26,7 @@ export default function handleDeleteButtonClick(
     saveButtonElement.style.display = "none";
     completeButtonElement.style.display = "none";
     deleteButtonElement.style.display = "none";
-    removeListener = true;
-  }
-
-  deleteButtonElement.addEventListener(CLICK_EVENT, handleDeleteButton);
-  if (removeListener) {
     deleteButtonElement.removeEventListener(CLICK_EVENT, handleDeleteButton);
   }
+  deleteButtonElement.addEventListener(CLICK_EVENT, handleDeleteButton);
 }

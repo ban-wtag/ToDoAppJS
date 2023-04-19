@@ -10,8 +10,6 @@ export default function handleCheckButtonClick(
   deleteButtonElement,
   completeButtonElement
 ) {
-  let removeListener = false;
-
   function handleCheckButton(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -39,11 +37,8 @@ export default function handleCheckButtonClick(
       saveButtonElement.style.display = "none";
       completeButtonElement.style.display = "none";
       deleteButtonElement.style.display = "none";
-      removeListener = true;
+      completeButtonElement.removeEventListener(CLICK_EVENT, handleCheckButton);
     }
   }
   completeButtonElement.addEventListener(CLICK_EVENT, handleCheckButton);
-  if (removeListener) {
-    completeButtonElement.removeEventListener(CLICK_EVENT, handleCheckButton);
-  }
 }
