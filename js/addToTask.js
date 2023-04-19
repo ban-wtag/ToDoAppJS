@@ -26,7 +26,7 @@ function addToDo(taskName, id) {
     month: "numeric",
     year: "numeric",
   };
-  dateString = TODAY.toLocaleDateString("en-us", options);
+  dateString = TODAY.toLocaleDateString("en-GB", options);
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
@@ -37,6 +37,7 @@ function addToDo(taskName, id) {
 
   const position = AFTER_BEGIN;
   UL_LIST.insertAdjacentHTML(position, item);
+  console.log(dateString);
 }
 
 CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
