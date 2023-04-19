@@ -27,3 +27,4 @@ export const AFTER_BEGIN = "afterbegin";
 //load more, show less button
 export const loadMoreBtn = document.querySelector("#load-more");
 export const showLessBtn = document.querySelector(".show-less");
+export const msPerDay = 86400000;
