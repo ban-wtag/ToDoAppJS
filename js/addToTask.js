@@ -20,7 +20,7 @@ import {
 import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import editTask from "/js/editTask.js";
-import updateVisibility from "/js/utility/updateVisibility.js";
+import updateVisibility from "/js/utility/firstNItemShow.js";
 
 const taskList = [];
 let id = 0;
@@ -48,6 +48,7 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   if (INPUT_TASK.className === HIDE) {
     INPUT_TASK.classList.remove(HIDE);
   }
+
   INPUT.focus();
 });
 
@@ -65,21 +66,17 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
     });
     id += 1;
   }
+
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
-  updateVisibility ();
-  if (taskList.length == PAGINATED_NO + 1) {
-    console.log("addPagination starts on add_task");
-    loadMoreBtn.style.display = "block";
-  }
+
+  updateVisibility();
 });
 
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
 });
-
-let removeListener = false;
 
 function onActionTodo(event) {
   const element = event.target;
@@ -91,7 +88,6 @@ function onActionTodo(event) {
   } else if (elementJob === EDIT) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
-  removeListener = true;
   UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
   addTodoClickListener();
 }
@@ -99,4 +95,5 @@ function onActionTodo(event) {
 function addTodoClickListener() {
   UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
 }
+
 addTodoClickListener();
