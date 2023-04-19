@@ -25,7 +25,7 @@ export default function markTodoAsCompleted(
   const taskStartDay = todoItemElement.querySelector(".date").innerText;
   let taskStartDateString = taskStartDay.replace(/[^0-9]/g, "-");
   taskStartDateString = taskStartDateString.slice(12);
-  
+
   const duration = calculateDuration(taskStartDateString);
   if (duration === -1) {
     return;
