@@ -18,14 +18,13 @@ export default function markTodoAsCompleted(
   textStyle.textDecoration = "line-through";
   textStyle.color = "green";
 
-  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
-    "none";
+  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
   todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
 
   const taskStartDay = todoItemElement.querySelector(".date").innerText;
   let taskStartDateString = taskStartDay.replace(/[^0-9]/g, "-");
   taskStartDateString = taskStartDateString.slice(12);
-  
+
   const duration = calculateDuration(taskStartDateString);
   if (duration === -1) {
     return;
