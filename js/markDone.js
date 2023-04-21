@@ -1,6 +1,7 @@
 import { EDIT, COMPLETE } from "/js/constants.js";
 import calculateDuration from "/js/utility/calculateDuration.js";
 import createDurationElement from "/js/utility/createDurationElement.js";
+import hideChildByAttrs from "/js/utility/hideChildByAttrs.js";
 
 export default function markTodoAsCompleted(
   todoItemElement,
@@ -18,13 +19,13 @@ export default function markTodoAsCompleted(
   textStyle.textDecoration = "line-through";
   textStyle.color = "green";
 
-  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display = "none";
-  todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
-
-  const taskStartDay = todoItemElement.querySelector(".date").innerText;
-  let taskStartDateString = taskStartDay.replace(/[^0-9]/g, "-");
-  taskStartDateString = taskStartDateString.slice(12);
-
+  const attr = "data-job";
+  hideChildByAttrs(
+    todoItemElement,
+    `[${attr}="${COMPLETE}"]`,
+    `[${attr}="${EDIT}"]`
+  );
+  const taskStartDateString = task.startDate;
   const duration = calculateDuration(taskStartDateString);
   if (duration === -1) {
     return;
