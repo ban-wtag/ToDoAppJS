@@ -20,12 +20,12 @@ export default function markTodoAsCompleted(
   textStyle.color = "green";
 
   const attr = "data-job";
-  hideChildByAttrs(todoItemElement,`[${attr}="${COMPLETE}"]`, `[${attr}="${EDIT}"]`);
-
-  const taskStartDay = todoItemElement.querySelector(".date").innerText;
-  let taskStartDateString = taskStartDay.replace(/[^0-9]/g, "-");
-  taskStartDateString = taskStartDateString.slice(12);
-
+  hideChildByAttrs(
+    todoItemElement,
+    `[${attr}="${COMPLETE}"]`,
+    `[${attr}="${EDIT}"]`
+  );
+  const taskStartDateString = task.startDate;
   const duration = calculateDuration(taskStartDateString);
   if (duration === -1) {
     return;

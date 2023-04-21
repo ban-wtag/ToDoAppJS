@@ -19,14 +19,17 @@ import markTodoAsCompleted from "/js/markDone.js";
 
 const taskList = [];
 let id = 0;
-let dateString;
+
 function addToDo(taskName, id) {
   const options = {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
   };
-  dateString = TODAY.toLocaleDateString("en-GB", options);
+  const dateString = TODAY.toLocaleDateString("en-GB", options).replace(
+    /\//g,
+    "."
+  );
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
@@ -37,19 +40,21 @@ function addToDo(taskName, id) {
 
   const position = AFTER_BEGIN;
   UL_LIST.insertAdjacentHTML(position, item);
-  console.log(dateString);
 }
 
 CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   if (INPUT_TASK.className === HIDE) {
     INPUT_TASK.classList.remove(HIDE);
   }
+  
   INPUT.focus();
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   const taskName = INPUT.value;
   if (taskName) {
+    const taskStartDate = TODAY.toISOString().slice(0, 10);
+
     addToDo(taskName, id);
 
     taskList.push({
@@ -58,9 +63,12 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
       done: false,
       edit: false,
       trash: false,
+      startDate: taskStartDate,
     });
+
     id += 1;
   }
+
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
 });
