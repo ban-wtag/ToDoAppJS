@@ -1,6 +1,6 @@
 import {
-  loadMoreBtn,
-  showLessBtn,
+  LOAD_MORE_BUTTON,
+  SHOW_LESS_BUTTON,
   CLICK_EVENT,
   PAGINATED_NO,
 } from "/js/constants.js";
@@ -10,7 +10,7 @@ const container = document.getElementById("container");
 const itemsToShow = PAGINATED_NO;
 let visibleItems = itemsToShow;
 
-loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
+LOAD_MORE_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
   let boxes = [...document.querySelectorAll(".container .content .item")];
   let noOfTaskPresent = Object.keys(boxes).length;
@@ -24,12 +24,14 @@ loadMoreBtn.addEventListener(CLICK_EVENT, function (event) {
   currentItem += PAGINATED_NO;
 
   if (currentItem >= noOfTaskPresent) {
-    loadMoreBtn.style.display = "none";
-    showLessBtn.style.display = "block";
+    console.log("currentItem in loadMore", currentItem);
+    console.log("noOfTask in loadMore", noOfTaskPresent);
+    LOAD_MORE_BUTTON.style.display = "none";
+    SHOW_LESS_BUTTON.style.display = "block";
   }
 });
 
-showLessBtn.addEventListener(CLICK_EVENT, function (e) {
+SHOW_LESS_BUTTON.addEventListener(CLICK_EVENT, function (e) {
   e.preventDefault();
   let visibleItems = PAGINATED_NO;
   let boxes = [...document.querySelectorAll(".container .content .item")];
@@ -41,12 +43,10 @@ showLessBtn.addEventListener(CLICK_EVENT, function (e) {
     }
   });
 
-  showLessBtn.style.display = "none";
-  loadMoreBtn.style.display = "block";
+  SHOW_LESS_BUTTON.style.display = "none";
+  LOAD_MORE_BUTTON.style.display = "block";
   currentItem = PAGINATED_NO;
 });
-
-visibleItems = currentItem;
 
 export default function updateVisibleItems() {
   let boxes = [...document.querySelectorAll(".container .content .item")];
@@ -62,13 +62,13 @@ export default function updateVisibleItems() {
   });
 
   if (visibleItems < noOfTaskPresent) {
-    loadMoreBtn.style.display = "block";
-    showLessBtn.style.display = "none";
+    LOAD_MORE_BUTTON.style.display = "block";
+    SHOW_LESS_BUTTON.style.display = "none";
   } else if (visibleItems > itemsToShow) {
-    loadMoreBtn.style.display = "none";
-    showLessBtn.style.display = "block";
+    LOAD_MORE_BUTTON.style.display = "none";
+    SHOW_LESS_BUTTON.style.display = "block";
   } else {
-    loadMoreBtn.style.display = "none";
-    showLessBtn.style.display = "none";
+    LOAD_MORE_BUTTON.style.display = "none";
+    SHOW_LESS_BUTTON.style.display = "none";
   }
 }

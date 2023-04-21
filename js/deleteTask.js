@@ -1,4 +1,4 @@
-import { PAGINATED_NO, loadMoreBtn } from "/js/constants.js";
+import { PAGINATED_NO, LOAD_MORE_BUTTON } from "/js/constants.js";
 import updateVisibileItems from "/js/addPagination.js";
 
 export default function removeTodo(element, taskList, id) {
@@ -8,6 +8,6 @@ export default function removeTodo(element, taskList, id) {
   taskList.splice(index, 1);
   updateVisibileItems();
   if (taskList.length < PAGINATED_NO + 1) {
-    loadMoreBtn.style.display = "none";
+    LOAD_MORE_BUTTON.style.display = "none";
   }
 }

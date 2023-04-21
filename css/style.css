@@ -37,3 +37,6 @@ input {
   pointer-events: none;
   opacity: 0.5;
 }
+#Load-more, #Show-less{
+  display: none;
+}

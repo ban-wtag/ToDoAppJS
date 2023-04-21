@@ -12,26 +12,26 @@ import {
   DELETE_TODO,
   CLICK_EVENT,
   HIDE,
-  loadMoreBtn,
-  showLessBtn,
-  PAGINATED_NO,
   AFTER_BEGIN,
 } from "/js/constants.js"; //named import
 import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import editTask from "/js/editTask.js";
-import updateVisibility from "/js/utility/firstNItemShow.js";
+import updateVisibleItems from "/js/addPagination.js";
 
 const taskList = [];
 let id = 0;
-let dateString;
+
 function addToDo(taskName, id) {
   const options = {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
   };
-  dateString = TODAY.toLocaleDateString("en-us", options);
+  const dateString = TODAY.toLocaleDateString("en-GB", options).replace(
+    /\//g,
+    "."
+  );
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
@@ -55,6 +55,8 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   const taskName = INPUT.value;
   if (taskName) {
+    const taskStartDate = TODAY.toISOString().slice(0, 10);
+
     addToDo(taskName, id);
 
     taskList.push({
@@ -63,14 +65,16 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
       done: false,
       edit: false,
       trash: false,
+      startDate: taskStartDate,
     });
+
     id += 1;
   }
 
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
 
-  updateVisibility();
+updateVisibleItems();
 });
 
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
@@ -88,6 +92,7 @@ function onActionTodo(event) {
   } else if (elementJob === EDIT) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
+  
   UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
   addTodoClickListener();
 }

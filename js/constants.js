@@ -21,10 +21,10 @@ export const COMPLETED_TASK = "COMPLETED_TASK";
 export const ALL_FILTER = "all";
 export const INCOMPLETE_FILTER = "incompleted";
 export const COMPLETE_FILTER = "completed";
-export const PAGINATED_NO = 2;
+export const PAGINATED_NO = 5;
 export const AFTER_BEGIN = "afterbegin";
 
 //load more, show less button
-export const loadMoreBtn = document.querySelector("#load-more");
-export const showLessBtn = document.querySelector(".show-less");
-export const msPerDay = 86400000;
+export const LOAD_MORE_BUTTON = document.querySelector("#Load-more");
+export const SHOW_LESS_BUTTON = document.querySelector(".Show-less");
+export const MS_PER_DAY = 86400000;
