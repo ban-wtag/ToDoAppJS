@@ -28,6 +28,7 @@ function addToDo(taskName, id) {
     month: "2-digit",
     day: "2-digit",
   };
+
   const dateString = TODAY.toLocaleDateString("en-GB", options).replace(
     /\//g,
     "."
@@ -69,12 +70,14 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
     });
 
     id += 1;
+  } else {
+    INPUT.focus();
+    return;
   }
-
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
 
-updateVisibleItems();
+  updateVisibleItems();
 });
 
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
@@ -92,7 +95,7 @@ function onActionTodo(event) {
   } else if (elementJob === EDIT) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
-  
+
   UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
   addTodoClickListener();
 }

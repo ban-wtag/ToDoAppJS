@@ -24,8 +24,6 @@ LOAD_MORE_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   currentItem += PAGINATED_NO;
 
   if (currentItem >= noOfTaskPresent) {
-    console.log("currentItem in loadMore", currentItem);
-    console.log("noOfTask in loadMore", noOfTaskPresent);
     LOAD_MORE_BUTTON.style.display = "none";
     SHOW_LESS_BUTTON.style.display = "block";
   }
