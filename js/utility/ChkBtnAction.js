@@ -27,7 +27,7 @@ export default function handleCheckButtonClick(
       if (errorMessage) {
         todoItemElement.removeChild(errorMessage);
       }
-      todoItemElement.querySelector(".text").contentEditable = false;
+      textElement.contentEditable = false;
       markTodoAsCompleted(todoItemElement, taskList, id);
       todoItemElement.querySelector(
         `[data-job="${DELETE_TODO}"]`
