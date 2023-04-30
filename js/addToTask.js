@@ -46,15 +46,14 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   if (INPUT_TASK.className === HIDE) {
     INPUT_TASK.classList.remove(HIDE);
   }
-  
+
   INPUT.focus();
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   const taskName = INPUT.value;
   if (taskName) {
-    const taskStartDate = TODAY.toISOString().slice(0, 10);
-
+  
     addToDo(taskName, id);
 
     taskList.push({
@@ -63,7 +62,7 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
       done: false,
       edit: false,
       trash: false,
-      startDate: taskStartDate,
+      startDate: Date.now(),
     });
 
     id += 1;
