@@ -29,7 +29,7 @@ LOAD_MORE_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   }
 });
 
-SHOW_LESS_BUTTON.addEventListener(CLICK_EVENT, function (e) {
+SHOW_LESS_BUTTON.addEventListener(CLICK_EVENT, function(e) {
   e.preventDefault();
   let visibleItems = PAGINATED_NO;
   let boxes = [...document.querySelectorAll(".container .content .item")];

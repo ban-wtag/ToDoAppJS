@@ -1,9 +1,7 @@
 import { MS_PER_DAY, TODAY } from "/js/constants.js";
 
-export default function calculateDuration(taskStartDateString) {
-  const startDate = Date.parse(taskStartDateString);
-  const endDateString = TODAY.toISOString().slice(0, 10);
-  const endDate = Date.parse(endDateString);
+export default function calculateDuration(startDate) {
+  const endDate = Date.now();
 
   if (startDate > endDate) {
     return -1;

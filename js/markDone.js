@@ -29,8 +29,8 @@ export default function markTodoAsCompleted(
     `[${attr}="${COMPLETE}"]`,
     `[${attr}="${EDIT}"]`
   );
-  const taskStartDateString = task.startDate;
-  const duration = calculateDuration(taskStartDateString);
+  const taskStartDate = task.startDate;
+  const duration = calculateDuration(taskStartDate);
   if (duration === -1) {
     return;
   }
