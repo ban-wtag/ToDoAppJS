@@ -14,6 +14,9 @@ export const TODAY = new Date();
 export const COMPLETE = "complete";
 export const EDIT = "edit";
 export const DELETE_TODO = "delete";
+export const EDIT_SAVE = "editSave";
+export const EDIT_CHECK = "editCheck";
+export const EDIT_DELETE = "editDelete";
 export const CLICK_EVENT = "click";
 export const HIDE = "hide";
 export const INCOMPLETED_TASK = "INCOMPLETED_TASK";
@@ -28,3 +31,6 @@ export const AFTER_BEGIN = "afterbegin";
 export const LOAD_MORE_BUTTON = document.querySelector("#Load-more");
 export const SHOW_LESS_BUTTON = document.querySelector("#Show-less");
 export const MS_PER_DAY = 86400000;
+
+export const DONE_ICON = "icons/done.svg";
+export const DELETE_ICON = "icons/delete.svg";

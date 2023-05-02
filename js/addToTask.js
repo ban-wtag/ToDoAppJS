@@ -54,9 +54,10 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
-  const taskName = INPUT.value;
+  let taskName = INPUT.value;
+  taskName = taskName.trim();
+  INPUT.value = taskName;
   if (taskName) {
-  
     addToDo(taskName, id);
 
     taskList.push({

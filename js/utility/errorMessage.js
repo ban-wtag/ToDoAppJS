@@ -1,7 +1,7 @@
-export default function createErrorMessage(){
-const errorMessage = document.createElement('div');
-errorMessage.textContent = 'Please add task description.';
-errorMessage.style.color = 'red';
-errorMessage.id = 'error-message';
-return errorMessage;
+export default function createErrorMessageElement() {
+  const errorMessageElement = document.createElement("div");
+  errorMessageElement.textContent = "Please add task description.";
+  errorMessageElement.style.color = "red";
+  errorMessageElement.id = "error-message";
+  return errorMessageElement;
 }
