@@ -7,7 +7,9 @@
   line-height: 16px;
   color: #aaacbc;
 }
-
+ul li {
+  list-style: none;
+}
 .hide {
   display: none;
 }

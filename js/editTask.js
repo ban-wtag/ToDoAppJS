@@ -1,44 +1,59 @@
-import { EDIT, COMPLETE, DELETE_TODO } from "/js/constants.js";
-import handleSaveButtonClick from "/js/utility/SaveBtnAction.js";
-import handleDeleteButtonClick from "/js/utility/DltBtnAction.js";
-import handleCheckButtonClick from "/js/utility/ChkBtnAction.js";
+import {
+  EDIT,
+  COMPLETE,
+  DELETE_TODO,
+  EDIT_SAVE,
+  EDIT_CHECK,
+  EDIT_DELETE,
+  DONE_ICON,
+  DELETE_ICON,
+} from "/js/constants.js";
+import handleSaveButtonClick from "/js/utility/SaveButtonAction.js";
+import handleDeleteButtonClick from "/js/utility/DeleteButtonAction.js";
+import handleCheckButtonClick from "/js/utility/CheckButtonAction.js";
+import createButton from "/js/utility/createButton.js";
+import hideButtonByAttributes from "/js/utility/hideButtonByAttributes.js";
 
 export default function editTask(todoItemElement, taskList, elementId) {
-  todoItemElement.querySelector(`[data-job="${DELETE_TODO}"]`).style.display =
-    "none";
-  todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
-  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
-    "none";
+  const attr = "data-job";
+
+  hideButtonByAttributes(
+    todoItemElement,
+    `[${attr}="${DELETE_TODO}"]`,
+    `[${attr}="${EDIT}"]`,
+    `[${attr}="${COMPLETE}"]`
+  );
+
   const textElement = todoItemElement.querySelector(".text");
   textElement.contentEditable = true;
   textElement.focus();
 
-  const saveBtn = document.createElement("button");
-  saveBtn.innerText = "Save";
-  saveBtn.classList.add("saveBtn");
-  todoItemElement.appendChild(saveBtn);
+  const saveButton = document.createElement("button");
+  saveButton.innerText = "Save";
+  saveButton.classList.add("saveButton");
+  saveButton.setAttribute("data-job", `${EDIT_SAVE}`);
+  todoItemElement.appendChild(saveButton);
 
-  const checkBtn = document.createElement("img");
-  checkBtn.setAttribute("src", "icons/done.svg");
-  checkBtn.setAttribute("data-job", "editCheck");
-  checkBtn.setAttribute("id", `${elementId}`);
-  todoItemElement.appendChild(checkBtn);
+  const checkButton = createButton("img", DONE_ICON, EDIT_CHECK, elementId);
+  todoItemElement.appendChild(checkButton);
 
-  const deleteBtn = document.createElement("img");
-  deleteBtn.setAttribute("src", "icons/delete.svg");
-  deleteBtn.setAttribute("data-job", "editDelete");
-  deleteBtn.setAttribute("id", `${elementId}`);
-  todoItemElement.appendChild(deleteBtn);
+  const deleteButton = createButton("img", DELETE_ICON, EDIT_DELETE, elementId);
+  todoItemElement.appendChild(deleteButton);
 
-  handleSaveButtonClick(todoItemElement, saveBtn, deleteBtn, checkBtn);
+  handleSaveButtonClick(todoItemElement, saveButton, deleteButton, checkButton);
 
   handleCheckButtonClick(
     todoItemElement,
     taskList,
     elementId,
-    saveBtn,
-    deleteBtn,
-    checkBtn
+    saveButton,
+    deleteButton,
+    checkButton
   );
-  handleDeleteButtonClick(todoItemElement, saveBtn, deleteBtn, checkBtn);
+  handleDeleteButtonClick(
+    todoItemElement,
+    saveButton,
+    deleteButton,
+    checkButton
+  );
 }

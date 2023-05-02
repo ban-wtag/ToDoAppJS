@@ -52,9 +52,10 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
-  const taskName = INPUT.value;
+  let taskName = INPUT.value;
+  taskName = taskName.trim();
+  INPUT.value = taskName;
   if (taskName) {
-  
     addToDo(taskName, id);
 
     taskList.push({
@@ -90,6 +91,7 @@ function onActionTodo(event) {
   } else if (elementJob === EDIT) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
+
   removeListener = true;
   UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
   addTodoClickListener();
@@ -98,4 +100,5 @@ function onActionTodo(event) {
 function addTodoClickListener() {
   UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
 }
+
 addTodoClickListener();

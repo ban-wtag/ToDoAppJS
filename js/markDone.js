@@ -1,7 +1,7 @@
 import { EDIT, COMPLETE } from "/js/constants.js";
 import calculateDuration from "/js/utility/calculateDuration.js";
 import createDurationElement from "/js/utility/createDurationElement.js";
-import hideChildByAttrs from "/js/utility/hideChildByAttrs.js";
+import hideButtonByAttributes from "/js/utility/hideButtonByAttributes.js";
 
 export default function markTodoAsCompleted(
   todoItemElement,
@@ -20,7 +20,7 @@ export default function markTodoAsCompleted(
   textStyle.color = "green";
 
   const attr = "data-job";
-  hideChildByAttrs(
+  hideButtonByAttributes(
     todoItemElement,
     `[${attr}="${COMPLETE}"]`,
     `[${attr}="${EDIT}"]`
