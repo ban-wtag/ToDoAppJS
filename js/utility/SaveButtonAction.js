@@ -29,11 +29,13 @@ export default function handleSaveButtonClick(
         const errorMessageCreated = createErrorMessageElement();
         todoItemElement.appendChild(errorMessageCreated);
       }
+
       todoItemElement.querySelector(".text").focus();
     } else {
       if (errorMessage) {
         todoItemElement.removeChild(errorMessage);
       }
+
       todoItemElement.querySelector(".text").contentEditable = false;
 
       const attr = "data-job";

@@ -28,8 +28,8 @@ export const PAGINATED_NO = 5;
 export const AFTER_BEGIN = "afterbegin";
 
 //load more, show less button
-export const LOAD_MORE_BUTTON = document.querySelector("#Load-more");
-export const SHOW_LESS_BUTTON = document.querySelector("#Show-less");
+export const LOAD_MORE_BUTTON = document.querySelector("#load-more");
+export const SHOW_LESS_BUTTON = document.querySelector("#show-less");
 export const MS_PER_DAY = 86400000;
 
 export const DONE_ICON = "icons/done.svg";

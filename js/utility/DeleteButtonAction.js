@@ -25,6 +25,7 @@ export default function handleDeleteButtonClick(
     if (errorMessage) {
       todoItemElement.removeChild(errorMessage);
     }
+
     todoItemElement.querySelector(".text").contentEditable = false;
     todoItemElement.querySelector(".text").innerText = previousContent;
 

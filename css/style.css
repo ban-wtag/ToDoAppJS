@@ -14,12 +14,6 @@ ul li {
   display: none;
 }
 
-.show-less {
-  display: none;
-}
-#load-more {
-  display: none;
-}
 input {
   height: 30px;
 }
@@ -39,6 +33,7 @@ input {
   pointer-events: none;
   opacity: 0.5;
 }
-#Load-more, #Show-less{
+#load-more,
+#show-less {
   display: none;
 }

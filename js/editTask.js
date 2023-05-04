@@ -42,14 +42,7 @@ export default function editTask(todoItemElement, taskList, elementId) {
 
   handleSaveButtonClick(todoItemElement, saveButton, deleteButton, checkButton);
 
-  handleCheckButtonClick(
-    todoItemElement,
-    taskList,
-    elementId,
-    saveButton,
-    deleteButton,
-    checkButton
-  );
+  handleCheckButtonClick(todoItemElement, taskList, elementId, checkButton);
   handleDeleteButtonClick(
     todoItemElement,
     saveButton,
