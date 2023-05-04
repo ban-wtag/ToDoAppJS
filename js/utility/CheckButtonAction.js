@@ -6,11 +6,11 @@ import {
   EDIT_SAVE,
   EDIT_CHECK,
   EDIT_DELETE,
+  INPUT,
 } from "/js/constants.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import createErrorMessageElement from "/js/utility/errorMessage.js";
-import hideButtonByAttributes from "/js/utility/hideButtonByAttributes.js";
-import displayButtonByAttributes from "/js/utility/displayButtonByAttributes.js";
+import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
 
 export default function handleCheckButtonClick(
   todoItemElement,
@@ -38,17 +38,21 @@ export default function handleCheckButtonClick(
       }
 
       textElement.contentEditable = false;
+      const newTextElement = todoItemElement.querySelector(".text");
+      const newInputValue = newTextElement.innerText.trim();
+      newTextElement.innerText = newInputValue;
       markTodoAsCompleted(todoItemElement, taskList, id);
 
       const attr = "data-job";
-      displayButtonByAttributes(todoItemElement, `[${attr}="${DELETE_TODO}"]`);
 
-      hideButtonByAttributes(
+      toggleButtonDisplayByAttributes(
         todoItemElement,
+        `[${attr}="${DELETE_TODO}"]`,
         `[${attr}="${EDIT_SAVE}"]`,
-        `[${attr}="${EDIT}"]`,
         `[${attr}="${EDIT_CHECK}"]`,
-        `[${attr}="${EDIT_DELETE}"]`
+        `[${attr}="${EDIT_DELETE}"]`,
+        `[${attr}="${EDIT}"]`,
+        `[${attr}="${COMPLETE}"]`
       );
 
       completeButtonElement.removeEventListener(CLICK_EVENT, handleCheckButton);
