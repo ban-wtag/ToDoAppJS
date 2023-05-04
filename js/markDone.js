@@ -1,7 +1,7 @@
 import { EDIT, COMPLETE, COMPLETED_TASK } from "/js/constants.js";
 import calculateDuration from "/js/utility/calculateDuration.js";
 import createDurationElement from "/js/utility/createDurationElement.js";
-import hideButtonByAttributes from "/js/utility/hideButtonByAttributes.js";
+import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
 
 export default function markTodoAsCompleted(
   todoItemElement,
@@ -24,7 +24,7 @@ export default function markTodoAsCompleted(
   textStyle.color = "green";
 
   const attr = "data-job";
-  hideButtonByAttributes(
+  toggleButtonDisplayByAttributes(
     todoItemElement,
     `[${attr}="${COMPLETE}"]`,
     `[${attr}="${EDIT}"]`

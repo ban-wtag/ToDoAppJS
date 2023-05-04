@@ -7,8 +7,7 @@ import {
   EDIT_CHECK,
   EDIT_DELETE,
 } from "/js/constants.js";
-import hideButtonByAttributes from "/js/utility/hideButtonByAttributes.js";
-import displayButtonByAttributes from "/js/utility/displayButtonByAttributes.js";
+import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
 
 export default function handleDeleteButtonClick(
   todoItemElement,
@@ -30,15 +29,11 @@ export default function handleDeleteButtonClick(
     todoItemElement.querySelector(".text").innerText = previousContent;
 
     const attr = "data-job";
-    displayButtonByAttributes(
+    toggleButtonDisplayByAttributes(
       todoItemElement,
       `[${attr}="${EDIT}"]`,
       `[${attr}="${DELETE_TODO}"]`,
-      `[${attr}="${COMPLETE}"]`
-    );
-
-    hideButtonByAttributes(
-      todoItemElement,
+      `[${attr}="${COMPLETE}"]`,
       `[${attr}="${EDIT_SAVE}"]`,
       `[${attr}="${EDIT_CHECK}"]`,
       `[${attr}="${EDIT_DELETE}"]`

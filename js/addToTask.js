@@ -36,9 +36,9 @@ function addToDo(taskName, id) {
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
-                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
-                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" data-job="${DELETE_TODO}" id="${id}"/>
+                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}" style = "inline-block"/>
+                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}" style = "inline-block"/>
+                  <img src = "icons/delete.svg" data-job="${DELETE_TODO}" id="${id}" style = "inline-block"/>
                   </li> `;
 
   const position = AFTER_BEGIN;
@@ -54,8 +54,7 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
-  let taskName = INPUT.value;
-  taskName = taskName.trim();
+  let taskName = INPUT.value.trim();
   INPUT.value = taskName;
   if (taskName) {
     addToDo(taskName, id);
