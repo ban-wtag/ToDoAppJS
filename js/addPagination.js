@@ -12,8 +12,8 @@ let visibleItems = itemsToShow;
 
 LOAD_MORE_BUTTON.addEventListener(CLICK_EVENT, function (event) {
   event.preventDefault();
-  let boxes = [...document.querySelectorAll(".container .content .item")];
-  let numOfTaskPresent = Object.keys(boxes).length;
+  const boxes = [...document.querySelectorAll(".container .content .item")];
+  const numOfTaskPresent = Object.keys(boxes).length;
   for (
     let i = currentItem;
     i < Math.min(currentItem + PAGINATED_NO, numOfTaskPresent);
@@ -31,8 +31,7 @@ LOAD_MORE_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 
 SHOW_LESS_BUTTON.addEventListener(CLICK_EVENT, function (e) {
   e.preventDefault();
-  let visibleItems = PAGINATED_NO;
-  let boxes = [...document.querySelectorAll(".container .content .item")];
+  const boxes = [...document.querySelectorAll(".container .content .item")];
   boxes.forEach((item, index) =>
     index < PAGINATED_NO
       ? (item.style.display = "block")
@@ -45,17 +44,10 @@ SHOW_LESS_BUTTON.addEventListener(CLICK_EVENT, function (e) {
 });
 
 export default function updateVisibleItems() {
-  let boxes = [...document.querySelectorAll(".container .content .item")];
+  const boxes = [...document.querySelectorAll(".container .content .item")];
   const numOfTaskPresent = Object.keys(boxes).length;
   visibleItems = Math.min(currentItem, numOfTaskPresent);
 
-  // boxes.forEach((item, index) => {
-  //   if (index < visibleItems) {
-  //     item.style.display = "block";
-  //   } else {
-  //     item.style.display = "none";
-  //   }
-  // });
   boxes.forEach((item, index) =>
     index < visibleItems
       ? (item.style.display = "block")

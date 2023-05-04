@@ -14,10 +14,6 @@ export default function markTodoAsCompleted(
   }
 
   task.done = true;
-
-  todoItemElement.querySelector(`[data-job="${COMPLETE}"]`).style.display =
-    "none";
-  todoItemElement.querySelector(`[data-job="${EDIT}"]`).style.display = "none";
   todoItemElement.classList.add(COMPLETED_TASK);
   const textStyle = todoItemElement.querySelector(".text").style;
   textStyle.textDecoration = "line-through";
