@@ -8,6 +8,7 @@ import {
   EDIT_DELETE,
 } from "/js/constants.js";
 import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
+import removeButton from "/js/utility/removeButton.js";
 
 export default function handleDeleteButtonClick(
   todoItemElement,
@@ -24,6 +25,7 @@ export default function handleDeleteButtonClick(
     if (errorMessage) {
       todoItemElement.removeChild(errorMessage);
     }
+
     todoItemElement.querySelector(".text").contentEditable = false;
     todoItemElement.querySelector(".text").innerText = previousContent;
 
@@ -38,11 +40,15 @@ export default function handleDeleteButtonClick(
       `[${attr}="${EDIT_DELETE}"]`
     );
 
-    todoItemElement.removeChild(saveButtonElement);
-    todoItemElement.removeChild(completeButtonElement);
-    todoItemElement.removeChild(deleteButtonElement);
+    removeButton(
+      todoItemElement,
+      saveButtonElement,
+      completeButtonElement,
+      deleteButtonElement
+    );
 
     deleteButtonElement.removeEventListener(CLICK_EVENT, handleDeleteButton);
   }
+
   deleteButtonElement.addEventListener(CLICK_EVENT, handleDeleteButton);
 }

@@ -78,8 +78,6 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT.value = null;
 });
 
-let removeListener = false;
-
 function onActionTodo(event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
@@ -91,7 +89,6 @@ function onActionTodo(event) {
     editTask(element.parentNode, taskList, Number(element.id));
   }
 
-  removeListener = true;
   UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
   addTodoClickListener();
 }
