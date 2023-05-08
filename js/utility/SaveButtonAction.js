@@ -10,6 +10,7 @@ import {
   INPUT,
 } from "/js/constants.js";
 import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
+import removeButton from "/js/utility/removeButton.js";
 
 export default function handleSaveButtonClick(
   todoItemElement,
@@ -53,12 +54,16 @@ export default function handleSaveButtonClick(
         `[${attr}="${EDIT}"]`
       );
 
-      todoItemElement.removeChild(saveButtonElement);
-      todoItemElement.removeChild(completeButtonElement);
-      todoItemElement.removeChild(deleteButtonElement);
+      removeButton(
+        todoItemElement,
+        saveButtonElement,
+        completeButtonElement,
+        deleteButtonElement
+      );
 
       saveButtonElement.removeEventListener(CLICK_EVENT, handleSaveButton);
     }
   }
+
   saveButtonElement.addEventListener(CLICK_EVENT, handleSaveButton);
 }
