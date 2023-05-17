@@ -5,6 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1e5a35ab03.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- create button -->
+      <div class="create">
+        <h1>Add Tasks</h1>
+        <button id="createButton">
+          <i class="fa-duotone fa-plus"></i>Create
+        </button>
+      </div>
+
+      <!--user input interface-->
+      <div class="hide inputTask" id="inputTask">
+        <input type="text" id="input" placeholder="Add a Todo" />
+        <button id="addTaskButton">Add Task</button>
+        <div class="trashInput">
+            <img src="icons/delete.svg" job="delete" id="0" />
+        </div>
+      </div>
+
+      <!--content section having TASK list-->
+      <div class="content">
+        <ul id="list"></ul>
+      </div>
+    </div>
+    <script type="module" src="js/scripts.js" defer></script>
+  </body>
 </html>
