@@ -6,6 +6,9 @@
   line-height: 16px;
   color: #aaacbc;
 }
+ul li{
+  list-style: none;
+}
 
 .hide {
   display: none;
@@ -14,14 +17,14 @@ input {
   height: 30px;
 }
 
-#inputTask input,
-#inputTask button,
-#inputTask .trashInput {
+.inputTask>input,
+.inputTask>button,
+.inputTask>.trashInput {
   margin: 7px 0;
   display: inline-block;
   vertical-align: middle;
 }
-#inputTask .trashInput {
+.inputTask>.trashInput {
   margin-left: 5px;
   margin-top: 3px;
 }
