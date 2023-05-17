@@ -14,6 +14,7 @@ import {
   HIDE,
   AFTER_BEGIN,
 } from "/js/constants.js"; //named import
+import removeTodo from "/js/deleteTask.js";
 import createErrorMessageElement from "/js/utility/errorMessage.js";
 
 const taskList = [];
@@ -81,3 +82,19 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
 });
+
+let removeListener = false;
+
+function onActionTodo(event) {
+  const element = event.target;
+  const elementJob = element.getAttribute("data-job");
+  if (elementJob === DELETE_TODO) {
+    removeTodo(element.parentNode, taskList, Number(element.id));
+  }
+  removeListener = true;
+}
+
+UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
+if (removeListener) {
+  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+}
