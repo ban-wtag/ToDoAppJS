@@ -15,6 +15,7 @@ import {
   AFTER_BEGIN,
 } from "/js/constants.js"; //named import
 import removeTodo from "/js/deleteTask.js";
+import createErrorMessageElement from "/js/utility/errorMessage.js";
 
 const taskList = [];
 let id = 0;
@@ -39,15 +40,21 @@ function addToDo(taskName, id) {
 }
 
 CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
-  if (INPUT_TASK.className === HIDE) {
+  if (INPUT_TASK.classList.contains(HIDE)) {
     INPUT_TASK.classList.remove(HIDE);
   }
   INPUT.focus();
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
-  const taskName = INPUT.value;
+  const todoItemElement = document.getElementById("inputTask");
+  const errorMessage = todoItemElement.querySelector("#error-message");
+  let taskName = INPUT.value.trim();
+  INPUT.value = taskName;
   if (taskName) {
+    if (errorMessage) {
+      todoItemElement.removeChild(errorMessage);
+    }
     addToDo(taskName, id);
 
     taskList.push({
@@ -58,6 +65,14 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
       trash: false,
     });
     id += 1;
+  }
+  else {
+    if (!errorMessage) {
+      const errorMessageCreated = createErrorMessageElement();
+      todoItemElement.appendChild(errorMessageCreated);
+    }
+    INPUT.focus();
+    return;
   }
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
