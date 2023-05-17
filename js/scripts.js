@@ -6,5 +6,5 @@ function addAllJsFile (jsFiles) {
 }
 addAllJsFile("js/constants.js");
 addAllJsFile("js/addToTask.js");
-addAllJsFile("js/deleteTask.js.js");
+addAllJsFile("js/deleteTask.js");
 addAllJsFile("js/markDone.js");
