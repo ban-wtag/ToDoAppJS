@@ -17,6 +17,7 @@ import {
 import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import editTask from "/js/editTask.js";
+import createErrorMessageElement from "/js/utility/errorMessage.js";
 import updateVisibleItems from "/js/addPagination.js";
 
 const taskList = [];
@@ -46,7 +47,7 @@ function addToDo(taskName, id) {
 }
 
 CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
-  if (INPUT_TASK.className === HIDE) {
+  if (INPUT_TASK.classList.contains(HIDE)) {
     INPUT_TASK.classList.remove(HIDE);
   }
 
@@ -56,7 +57,12 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   let taskName = INPUT.value.trim();
   INPUT.value = taskName;
+  const todoItemElement = document.getElementById("inputTask");
+  const errorMessage = todoItemElement.querySelector("#error-message");
   if (taskName) {
+    if (errorMessage) {
+      todoItemElement.removeChild(errorMessage);
+    }
     addToDo(taskName, id);
 
     taskList.push({
@@ -70,6 +76,10 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
 
     id += 1;
   } else {
+    if (!errorMessage) {
+      const errorMessageCreated = createErrorMessageElement();
+      todoItemElement.appendChild(errorMessageCreated);
+    }
     INPUT.focus();
     return;
   }
