@@ -16,6 +16,7 @@ import {
 } from "/js/constants.js"; //named import
 import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
+import editTask from "/js/editTask.js";
 import createErrorMessageElement from "/js/utility/errorMessage.js";
 
 const taskList = [];
@@ -34,9 +35,9 @@ function addToDo(taskName, id) {
   const item = `<li class="item">                  
                   <p class="text">${taskName}</p>
                   <div class = "date" id = "${id}"> Created At:  ${dateString} </div>
-                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}"/>
-                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}"/>
-                  <img src = "icons/delete.svg" data-job="${DELETE_TODO}" id="${id}"/>
+                  <img src= "icons/done.svg" data-job = "${COMPLETE}" id ="${id}" style = "inline-block"/>
+                  <img src = "icons/edit.svg" data-job = "${EDIT}" id = "${id}" style = "inline-block"/>
+                  <img src = "icons/delete.svg" data-job="${DELETE_TODO}" id="${id}" style = "inline-block"/>
                   </li> `;
 
   const position = AFTER_BEGIN;
@@ -52,10 +53,10 @@ CREATE_TASK_BUTTON.addEventListener(CLICK_EVENT, function (event) {
 });
 
 ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
-  const todoItemElement = document.getElementById("inputTask");
-  const errorMessage = todoItemElement.querySelector("#error-message");
   let taskName = INPUT.value.trim();
   INPUT.value = taskName;
+  const todoItemElement = document.getElementById("inputTask");
+  const errorMessage = todoItemElement.querySelector("#error-message");
   if (taskName) {
     if (errorMessage) {
       todoItemElement.removeChild(errorMessage);
@@ -72,8 +73,7 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
     });
 
     id += 1;
-  }
-  else {
+  } else {
     if (!errorMessage) {
       const errorMessageCreated = createErrorMessageElement();
       todoItemElement.appendChild(errorMessageCreated);
@@ -90,8 +90,6 @@ TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {
   INPUT.value = null;
 });
 
-let removeListener = false;
-
 function onActionTodo(event) {
   const element = event.target;
   const elementJob = element.getAttribute("data-job");
@@ -99,11 +97,16 @@ function onActionTodo(event) {
     removeTodo(element.parentNode, taskList, Number(element.id));
   } else if (elementJob === COMPLETE) {
     markTodoAsCompleted(element.parentNode, taskList, Number(element.id));
+  } else if (elementJob === EDIT) {
+    editTask(element.parentNode, taskList, Number(element.id));
   }
-  removeListener = true;
+
+  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+  addTodoClickListener();
 }
 
-UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
-if (removeListener) {
-  UL_LIST.removeEventListener(CLICK_EVENT, onActionTodo);
+function addTodoClickListener() {
+  UL_LIST.addEventListener(CLICK_EVENT, onActionTodo);
 }
+
+addTodoClickListener();
