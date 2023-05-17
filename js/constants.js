@@ -15,3 +15,4 @@ export const DELETE_TODO = "delete";
 export const CLICK_EVENT = "click";
 export const HIDE = "hide";
 export const AFTER_BEGIN = "afterbegin";
+export const MS_PER_DAY = 86400000;
