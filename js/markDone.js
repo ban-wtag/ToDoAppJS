@@ -1,4 +1,4 @@
-import { EDIT, COMPLETE } from "/js/constants.js";
+import { EDIT, COMPLETE, COMPLETED_TASK } from "/js/constants.js";
 import calculateDuration from "/js/utility/calculateDuration.js";
 import createDurationElement from "/js/utility/createDurationElement.js";
 import toggleButtonDisplayByAttributes from "/js/utility/toggleButtonDisplayByAttributes.js";
@@ -14,7 +14,7 @@ export default function markTodoAsCompleted(
   }
 
   task.done = true;
-
+  todoItemElement.classList.add(COMPLETED_TASK);
   const textStyle = todoItemElement.querySelector(".text").style;
   textStyle.textDecoration = "line-through";
   textStyle.color = "green";

@@ -18,6 +18,7 @@ import removeTodo from "/js/deleteTask.js";
 import markTodoAsCompleted from "/js/markDone.js";
 import editTask from "/js/editTask.js";
 import createErrorMessageElement from "/js/utility/errorMessage.js";
+import updateVisibleItems from "/js/addPagination.js";
 
 const taskList = [];
 let id = 0;
@@ -28,6 +29,7 @@ function addToDo(taskName, id) {
     month: "2-digit",
     day: "2-digit",
   };
+
   const dateString = TODAY.toLocaleDateString("en-GB", options).replace(
     /\//g,
     "."
@@ -83,6 +85,8 @@ ADD_TASK.addEventListener(CLICK_EVENT, function (event) {
   }
   INPUT_TASK.classList.add(HIDE);
   INPUT.value = null;
+
+  updateVisibleItems();
 });
 
 TRASH_INPUT.addEventListener(CLICK_EVENT, function (event) {

@@ -24,7 +24,6 @@ export default function handleCheckButtonClick(
     const errorMessage = todoItemElement.querySelector("#error-message");
     const textElement = todoItemElement.querySelector(".text");
     const inputValue = textElement.innerText;
-
     if (!inputValue) {
       if (!errorMessage) {
         const errorMessageCreated = createErrorMessageElement();

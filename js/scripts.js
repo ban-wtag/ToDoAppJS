@@ -9,3 +9,4 @@ addAllJsFile("js/addToTask.js");
 addAllJsFile("js/deleteTask.js");
 addAllJsFile("js/markDone.js");
 addAllJsFile("js/editTask.js");
+addAllJsFile("js/addPagination.js");
